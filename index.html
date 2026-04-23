@@ -3,464 +3,766 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>넥스트파트너 — AI 맞춤 시니어 일자리</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>넥스트파트너 — 중장년 맞춤 AI 일자리</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet" />
   <style>
-    /* ─── 홈 전용 스타일 ─── */
-    .home-main { padding: 32px 0 60px; }
+    :root {
+      --color-primary-500: #ff7f65;
+      --color-primary-400: #ff9a7a;
+      --color-primary-300: #ffb89f;
+      --color-primary-100: #ffe3dc;
+      --color-primary-50:  #fff4f1;
+      --color-neutral-900: #1a1a1a;
+      --color-neutral-800: #333333;
+      --color-neutral-700: #4a4a4a;
+      --color-neutral-600: #666666;
+      --color-neutral-400: #999999;
+      --color-neutral-200: #e5e5e5;
+      --color-neutral-100: #f0f0f0;
+      --color-neutral-50:  #f5f5f5;
+      --color-neutral-0:   #ffffff;
+      --color-warm-grey-25: #fbf9f9;
+      --color-error-500:  #f44336;
+      --gradient-ai: linear-gradient(135deg, #ff7f65, #f43f5e, #a855f7, #3b82f6, #06b6d4, #34d399);
+      --radius-button: 8px;
+      --radius-card: 8px;
+      --radius-pill: 999px;
+      --font-base: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-base); font-size: 16px; font-weight: 400; line-height: 1.6; color: var(--color-neutral-800); background: var(--color-neutral-0); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img, svg { display: block; max-width: 100%; }
+    button { font-family: var(--font-base); cursor: pointer; border: none; background: none; }
 
-    /* AI 추천 배너 */
-    .ai-hero {
-      background: linear-gradient(135deg, #fff4f1 0%, #f5edeb 100%);
-      border-radius: var(--radius-card);
-      padding: 28px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 32px;
+    /* LAYOUT */
+    .page-wrap { width: 100%; max-width: 1212px; margin: 0 auto; padding: 0 40px; }
+    @media (max-width: 768px) { .page-wrap { padding: 0 16px; } }
+
+    /* ── DESKTOP HEADER (DS: header.html) ── */
+    .np-header {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; padding: 0 40px;
+      background: var(--color-neutral-0);
+      border-bottom: 1px solid var(--color-neutral-200);
+      gap: 32px;
     }
-    @media (max-width: 600px) {
-      .ai-hero { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+    .np-header-logo {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 18px; font-weight: 700; color: var(--color-primary-500);
+      letter-spacing: -0.02em; white-space: nowrap; flex-shrink: 0;
     }
-    .ai-hero-text {}
-    .ai-hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--color-primary-500);
-      margin-bottom: 8px;
+    .logo-mark {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--gradient-ai);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .ai-hero-title {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--color-neutral-900);
-      line-height: 1.35;
-      margin-bottom: 6px;
+    .logo-mark span { font-size: 12px; font-weight: 800; color: #fff; line-height: 1; }
+    .np-header-nav { display: flex; align-items: center; gap: 4px; flex: 1; }
+    .np-header-nav-sep { width: 1px; height: 18px; background: var(--color-neutral-200); margin: 0 4px; flex-shrink: 0; }
+    .np-header-nav-item {
+      display: inline-flex; align-items: center;
+      height: 36px; padding: 0 16px;
+      font-size: 15px; font-weight: 500; color: var(--color-neutral-700);
+      border-radius: var(--radius-button);
+      border: 1.5px solid var(--color-neutral-200);
+      background: var(--color-neutral-0); cursor: pointer; white-space: nowrap;
+      transition: color .12s, background .12s, border-color .12s;
+      font-family: var(--font-base);
     }
-    .ai-hero-desc {
-      font-size: 15px;
-      color: var(--color-neutral-600);
-      line-height: 1.6;
+    .np-header-nav-item:hover { color: var(--color-neutral-900); border-color: var(--color-neutral-400); background: var(--color-neutral-50); }
+    .np-header-nav-item.active { color: #fff; font-weight: 700; background: var(--color-primary-500); border-color: var(--color-primary-500); }
+    .np-header-actions { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+    .np-header-action {
+      display: inline-flex; align-items: center; gap: 6px;
+      height: 36px; padding: 0 12px;
+      font-size: 14px; font-weight: 400; color: var(--color-neutral-600);
+      border-radius: 8px; border: none; background: none; cursor: pointer;
+      white-space: nowrap; transition: color .12s, background .12s;
+      font-family: var(--font-base);
     }
-    .ai-hero-illust {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      background: var(--color-primary-500);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 38px;
+    .np-header-action:hover { color: var(--color-neutral-900); background: var(--color-neutral-50); }
+    .np-header-action.icon-only { padding: 0 8px; }
+    .np-header-divider { width: 1px; height: 18px; background: var(--color-neutral-200); flex-shrink: 0; }
+
+    /* ── MOBILE HEADER ── */
+    .np-header-mobile {
+      display: none; position: sticky; top: 0; z-index: 100;
+      background: var(--color-neutral-0);
+      border-bottom: 1px solid var(--color-neutral-200);
     }
+    .np-header-mobile-top { display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 20px; }
+    .np-header-mobile-logo { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 700; color: var(--color-primary-500); }
+    .np-header-mobile-actions { display: flex; align-items: center; gap: 2px; }
+    .np-header-icon-btn {
+      width: 40px; height: 40px; border-radius: 8px; border: none; background: none;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-neutral-600); cursor: pointer;
+      transition: background .12s, color .12s; font-family: var(--font-base);
+    }
+    .np-header-icon-btn:hover { background: var(--color-neutral-50); color: var(--color-neutral-900); }
+    .mobile-nav-row {
+      display: flex; overflow-x: auto; scrollbar-width: none;
+      border-top: 1px solid var(--color-neutral-200);
+      padding: 8px 12px; gap: 6px;
+    }
+    .mobile-nav-row::-webkit-scrollbar { display: none; }
+    .mobile-nav-item {
+      display: inline-flex; align-items: center; height: 34px; padding: 0 14px;
+      font-size: 14px; font-weight: 500; color: var(--color-neutral-700);
+      border-radius: var(--radius-button); border: 1.5px solid var(--color-neutral-200);
+      background: var(--color-neutral-0); cursor: pointer; white-space: nowrap; flex-shrink: 0;
+      font-family: var(--font-base);
+    }
+    .mobile-nav-item.active { color: #fff; font-weight: 700; background: var(--color-primary-500); border-color: var(--color-primary-500); }
+    @media (max-width: 768px) {
+      .np-header { display: none; }
+      .np-header-mobile { display: block; }
+    }
+
+    /* ── HERO ── */
+    .hero-section { padding: 48px 0 40px; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 400px; gap: 40px; align-items: start; }
+    @media (max-width: 1024px) { .hero-inner { grid-template-columns: 1fr 320px; gap: 24px; } }
+    @media (max-width: 768px) { .hero-inner { grid-template-columns: 1fr; } .hero-section { padding: 28px 0 24px; } }
+    .hero-title { font-size: 36px; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; color: var(--color-neutral-900); margin-bottom: 28px; }
+    .hero-title em { font-style: normal; background: var(--gradient-ai); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    @media (max-width: 768px) { .hero-title { font-size: 26px; margin-bottom: 20px; } }
+
+    /* Activity Card (DS: home/index.html) */
+    .activity-card { background: var(--color-neutral-0); border: 2px solid var(--color-primary-500); border-radius: var(--radius-card); padding: 20px; }
+    .activity-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .activity-greeting { font-size: 16px; font-weight: 700; color: var(--color-neutral-900); }
+    .activity-greeting em { font-style: normal; color: var(--color-primary-500); }
+    .activity-more-btn { font-size: 14px; font-weight: 700; color: var(--color-primary-500); display: inline-flex; align-items: center; gap: 2px; border: none; background: none; cursor: pointer; font-family: var(--font-base); white-space: nowrap; }
+    .activity-alert { background: var(--color-primary-50); border-radius: 6px; padding: 10px 14px; font-size: 14px; color: var(--color-primary-500); font-weight: 500; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+    .activity-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; padding: 12px 8px; background: var(--color-neutral-50); border-radius: 6px; gap: 2px; }
+    .stat-label { font-size: 13px; color: var(--color-neutral-600); }
+    .stat-value { font-size: 22px; font-weight: 700; color: var(--color-primary-500); line-height: 1.2; }
+    .stat-unit { font-size: 13px; font-weight: 400; color: var(--color-neutral-600); }
+
+    /* Hero Banner */
+    .hero-banner { border-radius: 12px; overflow: hidden; min-height: 280px; position: relative; display: flex; flex-direction: column; background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%); }
+    .hero-banner-inner { padding: 32px 28px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .hero-banner-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.12); color: #fff; border-radius: var(--radius-pill); padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; margin-bottom: 16px; width: fit-content; }
+    .hero-banner-title { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.4; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .hero-banner-cta { display: inline-flex; align-items: center; gap: 4px; height: 40px; padding: 0 20px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: var(--radius-button); color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; font-family: var(--font-base); transition: background .12s; width: fit-content; }
+    .hero-banner-cta:hover { background: rgba(255,255,255,.25); }
+    .hero-banner-footer { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+    .banner-pager { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.6); }
+    .banner-arrow-btn { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(255,255,255,.8); transition: background .12s; font-family: var(--font-base); }
+    .banner-arrow-btn:hover { background: rgba(255,255,255,.25); }
+
+    /* ── SECTION COMMON (DS: section-container.html) ── */
+    .section-wrap { padding: 48px 0; }
+    @media (max-width: 768px) { .section-wrap { padding: 32px 0; } }
+    .np-section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 16px; gap: 12px; }
+    .np-section-label { font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--color-primary-500); margin-bottom: 4px; }
+    .np-section-title-text { font-size: 20px; font-weight: 700; color: var(--color-neutral-900); letter-spacing: -0.01em; line-height: 1.3; }
+    .np-section-desc { font-size: 15px; color: var(--color-neutral-600); margin-top: 4px; line-height: 1.6; }
+    .np-section-more { font-size: 14px; font-weight: 700; color: var(--color-primary-500); display: inline-flex; align-items: center; gap: 3px; border: none; background: none; cursor: pointer; padding: 4px 0; font-family: var(--font-base); white-space: nowrap; flex-shrink: 0; }
+    .section-with-arrows { display: flex; align-items: center; gap: 8px; }
+    .section-arrow-btn { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--color-neutral-200); background: var(--color-neutral-0); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-neutral-600); transition: all .12s; font-family: var(--font-base); }
+    .section-arrow-btn:hover { border-color: var(--color-primary-500); color: var(--color-primary-500); }
+
+    /* ── AI 추천 CONTAINER ── */
+    .ai-section-box { background: var(--color-neutral-0); border: 1.5px solid var(--color-neutral-200); border-radius: 16px; padding: 28px; }
+    .ai-section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; gap: 12px; flex-wrap: wrap; }
+    .ai-section-title { font-size: 18px; font-weight: 700; color: var(--color-neutral-900); line-height: 1.4; }
+    .ai-section-title em { font-style: normal; color: var(--color-primary-500); }
+    .ai-section-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .ai-pager { font-size: 13px; color: var(--color-neutral-400); white-space: nowrap; }
+    .ai-section-desc { font-size: 14px; color: var(--color-neutral-600); margin-bottom: 20px; line-height: 1.6; }
+    .ai-section-footer { margin-top: 16px; padding: 16px 20px; background: var(--color-neutral-50); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .ai-footer-text { font-size: 14px; color: var(--color-neutral-600); }
+    .ai-footer-actions { display: flex; gap: 8px; }
+    .btn-sm-outline { height: 36px; padding: 0 16px; font-size: 14px; font-weight: 700; border-radius: var(--radius-button); border: 1.5px solid var(--color-neutral-200); background: var(--color-neutral-0); color: var(--color-neutral-700); cursor: pointer; font-family: var(--font-base); transition: all .12s; white-space: nowrap; }
+    .btn-sm-outline:hover { border-color: var(--color-primary-500); color: var(--color-primary-500); }
+
+    /* ── JOB CARDS (DS: card.html) ── */
+    .jcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: start; }
+    @media (max-width: 960px) { .jcard-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .jcard-grid { grid-template-columns: 1fr; } }
+
+    /* DS: jcard-wrap / jcard-wrap.recommended */
+    .jcard-wrap { padding: 2px; border-radius: 12px; background: var(--color-neutral-200); }
+    .jcard-wrap.recommended { background: linear-gradient(135deg, #ff7f65 0%, #f43f5e 22%, #a855f7 44%, #3b82f6 66%, #06b6d4 84%, #34d399 100%); }
+    .jcard { background: var(--color-neutral-0); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; height: 100%; cursor: pointer; transition: background .12s; }
+    .jcard:hover { background: var(--color-neutral-50); }
+    .jcard-company-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .jcard-company { font-size: 13px; color: var(--color-neutral-400); }
+    .jcard-deadline { font-size: 13px; font-weight: 600; color: var(--color-error-500); }
+
+    /* DS: match-badge */
+    .match-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); background: var(--color-primary-500); color: #fff; margin-bottom: 10px; width: fit-content; }
+    .match-pct { font-size: 15px; font-weight: 700; }
+
+    .jcard-title { font-size: 16px; font-weight: 700; color: var(--color-neutral-900); line-height: 1.4; margin-bottom: 12px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+    .jcard-meta { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+    .meta-row { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-neutral-600); }
+    .meta-row svg { flex-shrink: 0; color: var(--color-neutral-400); }
+    .jcard-salary { font-size: 15px; font-weight: 700; color: var(--color-neutral-900); margin-bottom: 12px; }
+    .jcard-reasons { list-style: none; margin-bottom: 14px; display: flex; flex-direction: column; gap: 4px; }
+    .jcard-reasons li { font-size: 13px; color: var(--color-neutral-600); padding-left: 14px; position: relative; line-height: 1.5; }
+    .jcard-reasons li::before { content: '•'; position: absolute; left: 0; color: var(--color-primary-500); font-weight: 700; }
+    .jcard-reg-date { font-size: 12px; color: var(--color-neutral-400); margin-bottom: 14px; }
+
+    /* DS: jcard-cta */
+    .jcard-cta { width: 100%; height: 44px; border-radius: var(--radius-button); font-family: var(--font-base); font-size: 14px; font-weight: 700; cursor: pointer; transition: all .12s; margin-top: auto; background: var(--color-neutral-0); color: var(--color-neutral-800); border: 1.5px solid var(--color-neutral-200); }
+    .jcard-cta:hover { background: var(--color-neutral-50); border-color: var(--color-neutral-400); }
+
+    /* ── EVENT BANNER ── */
+    .event-banner-section { padding: 0 0 48px; }
+    .event-banner { background: var(--color-primary-500); border-radius: 12px; min-height: 120px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; font-weight: 700; }
+
+    /* ── INFO / CONTENT SECTION ── */
+    .content-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+    .content-tab { height: 36px; padding: 0 16px; font-size: 14px; font-weight: 500; border-radius: var(--radius-pill); border: 1.5px solid var(--color-neutral-200); background: var(--color-neutral-0); color: var(--color-neutral-600); cursor: pointer; font-family: var(--font-base); transition: all .12s; white-space: nowrap; }
+    .content-tab:hover { border-color: var(--color-neutral-400); color: var(--color-neutral-800); }
+    .content-tab.active { background: var(--color-primary-500); border-color: var(--color-primary-500); color: #fff; font-weight: 700; }
+    .content-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+    .content-card { border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--color-neutral-200); cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+    .content-card:hover { border-color: var(--color-neutral-400); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .content-card-thumb { width: 100%; height: 160px; background: var(--color-neutral-100); display: flex; align-items: center; justify-content: center; color: var(--color-neutral-400); font-size: 14px; }
+    .content-card-body { padding: 16px; }
+    .content-card-badge { display: inline-flex; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-pill); background: var(--color-primary-100); color: var(--color-primary-500); margin-bottom: 8px; }
+    .content-card-title { font-size: 15px; font-weight: 700; color: var(--color-neutral-900); line-height: 1.4; margin-bottom: 6px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+    .content-card-date { font-size: 13px; color: var(--color-neutral-400); }
+
+    /* ── ARTICLES ── */
+    .article-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    @media (max-width: 960px) { .article-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .article-grid { grid-template-columns: 1fr; } }
+    .article-card { padding: 14px 16px; border: 1px solid var(--color-neutral-200); border-radius: var(--radius-card); cursor: pointer; transition: border-color .15s; }
+    .article-card:hover { border-color: var(--color-neutral-400); }
+    .article-card-title { font-size: 14px; font-weight: 600; color: var(--color-neutral-900); line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+    .article-card-source { font-size: 12px; color: var(--color-neutral-400); }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--color-neutral-0); border-top: 1px solid var(--color-neutral-200); padding: 40px 0 32px; }
+    .footer-inner { display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; } }
+    .footer-notice-title { font-size: 14px; font-weight: 700; color: var(--color-neutral-900); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-notice-more { font-size: 13px; font-weight: 700; color: var(--color-primary-500); cursor: pointer; }
+    .notice-list { border: 1px solid var(--color-neutral-200); border-radius: var(--radius-card); overflow: hidden; }
+    .notice-item { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--color-neutral-100); font-size: 14px; }
+    .notice-item:last-child { border-bottom: none; }
+    .notice-tag { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: var(--color-primary-100); color: var(--color-primary-500); flex-shrink: 0; }
+    .notice-text { flex: 1; color: var(--color-neutral-800); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .notice-date { font-size: 12px; color: var(--color-neutral-400); flex-shrink: 0; }
+    .footer-contact-title { font-size: 14px; font-weight: 700; color: var(--color-neutral-900); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-contact-more { font-size: 13px; font-weight: 700; color: var(--color-primary-500); cursor: pointer; }
+    .footer-contact-card { background: var(--color-primary-50); border: 1px solid var(--color-primary-100); border-radius: var(--radius-card); padding: 20px; }
+    .footer-phone { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 700; color: var(--color-neutral-900); margin-bottom: 10px; }
+    .footer-phone-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary-500); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .footer-hours { font-size: 13px; color: var(--color-neutral-600); line-height: 1.8; }
+    .footer-bottom { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--color-neutral-200); display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: var(--color-primary-500); margin-bottom: 10px; }
+    .footer-corp-info { font-size: 12px; color: var(--color-neutral-400); line-height: 1.8; }
+    .footer-links { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+    .footer-links-title { font-size: 14px; font-weight: 700; color: var(--color-neutral-800); margin-bottom: 4px; }
+    .footer-link { font-size: 13px; color: var(--color-neutral-600); cursor: pointer; }
+    .footer-link:hover { color: var(--color-primary-500); }
+
+    /* ── MOBILE BOTTOM NAV (DS: bottom-nav.html) ── */
+    .np-bnav { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--color-neutral-0); border-top: 1px solid var(--color-neutral-200); }
+    .bnav-inner { display: flex; }
+    .bnav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 4px; gap: 4px; font-size: 12px; font-weight: 400; color: var(--color-neutral-400); border: none; background: none; cursor: pointer; transition: color .12s, background .12s; font-family: var(--font-base); text-decoration: none; }
+    .bnav-item.active { color: var(--color-primary-500); font-weight: 700; }
+    .bnav-item:hover { background: var(--color-primary-50); }
+    @media (max-width: 768px) { .np-bnav { display: block; } body { padding-bottom: 64px; } }
   </style>
 </head>
 <body>
-<!-- 데스크탑 헤더 -->
+
+<!-- ── DESKTOP HEADER (DS: header.html) ── -->
 <header class="np-header">
-  <a href="index.html" class="np-header-logo">넥스트파트너</a>
+  <a href="#" class="np-header-logo">
+    <div class="logo-mark"><span>N</span></div>
+    NextPartner
+  </a>
   <nav class="np-header-nav" aria-label="주요 메뉴">
+    <a href="#" class="np-header-nav-item">서비스 소개</a>
+    <div class="np-header-nav-sep"></div>
     <a href="#" class="np-header-nav-item active">AI 추천 일자리</a>
-    <a href="#" class="np-header-nav-item">일반 일자리</a>
     <a href="#" class="np-header-nav-item">공공 일자리</a>
+    <a href="#" class="np-header-nav-item">일반 일자리</a>
   </nav>
   <div class="np-header-actions">
     <button class="np-header-action icon-only" aria-label="알림">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
-      </svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
     </button>
     <div class="np-header-divider"></div>
     <a href="#" class="np-header-action">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-      </svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       내 계정
     </a>
-    <a href="#" class="np-header-action" style="color:var(--color-neutral-400)">로그아웃</a>
-  </div>
-</header>
-
-<!-- 모바일 헤더 -->
-<header class="np-header-mobile">
-  <a href="index.html" class="np-header-mobile-logo">넥스트파트너</a>
-  <div class="np-header-mobile-actions">
-    <button class="np-header-icon-btn" aria-label="알림">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
-      </svg>
-    </button>
-    <a href="#" class="np-header-icon-btn" aria-label="내 계정">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-      </svg>
+    <a href="#" class="np-header-action" style="color:var(--color-neutral-400)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      로그아웃
     </a>
   </div>
 </header>
 
-<!-- 메인 컨텐츠 -->
+<!-- ── MOBILE HEADER ── -->
+<header class="np-header-mobile" aria-label="모바일 헤더">
+  <div class="np-header-mobile-top">
+    <a href="#" class="np-header-mobile-logo">
+      <div class="logo-mark"><span>N</span></div>
+      NextPartner
+    </a>
+    <div class="np-header-mobile-actions">
+      <button class="np-header-icon-btn" aria-label="알림">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      </button>
+      <a href="#" class="np-header-icon-btn" aria-label="내 계정">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+    </div>
+  </div>
+  <nav class="mobile-nav-row" aria-label="메뉴">
+    <button class="mobile-nav-item">서비스 소개</button>
+    <button class="mobile-nav-item active">AI 추천 일자리</button>
+    <button class="mobile-nav-item">공공 일자리</button>
+    <button class="mobile-nav-item">일반 일자리</button>
+  </nav>
+</header>
+
 <main>
-  <div class="page-wrap">
-    <div class="home-main">
+<div class="page-wrap">
 
-      <!-- 이벤트 배너 (5.2) -->
-      <div class="section-gap" style="margin-bottom:24px;">
-        <div class="banner-track" style="gap:12px; display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none;">
-          <div class="banner-item" style="scroll-snap-align:start; flex-shrink:0; min-width:calc(100% - 32px);" onclick="location.href='#'">
-            <div class="banner-bg banner-1" style="min-height:160px; border-radius:12px; padding:24px;">
-              <div class="banner-content">
-                <div class="banner-label">🎯 이벤트</div>
-                <div class="banner-title">AI 이력서 무료 진단<br>지금 바로 시작하세요!</div>
-                <div class="banner-sub">나의 경력을 AI가 분석해드립니다</div>
-              </div>
+  <!-- ── HERO ── -->
+  <section class="hero-section">
+    <div class="hero-inner">
+
+      <!-- Left: 타이틀 + 활동 카드 -->
+      <div>
+        <h1 class="hero-title">
+          중장년 맞춤 일자리,<br>
+          <em>+AI파트너</em>가 구직 과정을<br>쉽고 간편하게 도와드립니다.
+        </h1>
+        <div class="activity-card">
+          <div class="activity-card-top">
+            <div class="activity-greeting"><em>양인희</em>님, 안녕하세요.</div>
+            <button class="activity-more-btn">
+              나의 활동 현황
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+          <div class="activity-alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            오늘 체크된 면접 일정이 <strong style="margin-left:3px;">1건</strong> 있습니다.
+          </div>
+          <div class="activity-stats">
+            <div class="stat-item">
+              <span class="stat-label">지원 현황</span>
+              <span class="stat-value">2<span class="stat-unit">건</span></span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">면접 현황</span>
+              <span class="stat-value">1<span class="stat-unit">건</span></span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">이력서</span>
+              <span class="stat-value">2<span class="stat-unit">건</span></span>
             </div>
           </div>
-          <div class="banner-item" style="scroll-snap-align:start; flex-shrink:0; min-width:calc(100% - 32px);" onclick="location.href='#'">
-            <div class="banner-bg banner-2" style="min-height:160px; border-radius:12px; padding:24px;">
-              <div class="banner-content">
-                <div class="banner-label">📚 가이드</div>
-                <div class="banner-title">면접 준비, 어렵지 않아요<br>AI 면접 코칭 신청</div>
-                <div class="banner-sub">50·60대 맞춤 면접 팁 제공</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
-      <!-- AI 이력서 CTA (5.5) - 이력서 0개인 경우 -->
-      <div class="section-gap resume-cta-card">
-        <div class="resume-cta-text">
-          <div class="resume-cta-title">✨ AI 이력서를 만들어보세요</div>
-          <div class="resume-cta-desc">질문에 답하기만 하면 AI가<br>이력서와 자기소개서를 써드려요</div>
-        </div>
-        <div class="resume-cta-actions">
-          <a href="#" class="np-btn np-btn-primary np-btn-lg" style="white-space:nowrap;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/>
-            </svg>
-            AI 이력서 만들기
-          </a>
-        </div>
-      </div>
-
-      <!-- AI 추천 공고 (5.1) -->
-      <div class="section-gap" style="margin-top:32px;">
-        <div class="section-header">
-          <div class="section-title">
-            <span style="background:var(--gradient-ai); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">AI 맞춤 추천 일자리</span>
-          </div>
-          <a href="#" class="section-more">
-            더보기
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </div>
-        <p style="font-size:14px; color:var(--color-neutral-600); margin-bottom:16px;">김영자님의 경력과 희망 조건에 맞는 공고를 추천해드렸어요</p>
-
-        <div class="jcard-grid">
-          <!-- 추천 공고 1 -->
-          <div class="jcard-wrap recommended">
-            <article class="jcard" >
-              <div class="jcard-top">
-                <span class="match-badge">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  AI 추천 <span class="match-pct">94%</span>
-                </span>
-                <span class="deadline">D-5 마감</span>
-              </div>
-              <div class="jcard-title-row">
-                <h3 class="jcard-title">카페 홀서빙 직원 모집 (시니어 환영)</h3>
-                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                </button>
-              </div>
-              <p class="jcard-sub">투썸플레이스 강남역점</p>
-              <hr class="jcard-divider">
-              <div class="jcard-meta">
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  서울 강남구
-                </span>
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  주 5일, 09:00~15:00
-                </span>
-              </div>
-              <div class="jcard-salary">시급 10,030원 <span class="salary-note">주휴수당 포함</span></div>
-              <div class="reason-sentence">
-                💡 서비스업 10년 경력과 강남구 근무 희망 조건이 딱 맞아요
-              </div>
-              <button class="jcard-cta cta-apply">지원하기</button>
-            </article>
-          </div>
-
-          <!-- 추천 공고 2 -->
-          <div class="jcard-wrap recommended">
-            <article class="jcard" >
-              <div class="jcard-top">
-                <span class="match-badge">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  AI 추천 <span class="match-pct">88%</span>
-                </span>
-                <span class="deadline">D-12 마감</span>
-              </div>
-              <div class="jcard-title-row">
-                <h3 class="jcard-title">아파트 관리사무소 행정보조</h3>
-                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                </button>
-              </div>
-              <p class="jcard-sub">강남 래미안 관리단</p>
-              <hr class="jcard-divider">
-              <div class="jcard-meta">
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  서울 강남구
-                </span>
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  주 5일, 오전
-                </span>
-              </div>
-              <div class="jcard-salary">월 180만원</div>
-              <div class="reason-sentence">
-                💡 사무행정 경력과 오전 근무 희망이 잘 맞아요
-              </div>
-              <button class="jcard-cta cta-apply">지원하기</button>
-            </article>
-          </div>
-
-          <!-- 추천 공고 3 -->
-          <div class="jcard-wrap recommended">
-            <article class="jcard" >
-              <div class="jcard-top">
-                <span class="match-badge">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  AI 추천 <span class="match-pct">82%</span>
-                </span>
-                <span class="deadline">D-20 마감</span>
-              </div>
-              <div class="jcard-title-row">
-                <h3 class="jcard-title">마트 계산원 (정규직 전환 가능)</h3>
-                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                </button>
-              </div>
-              <p class="jcard-sub">홈플러스 역삼점</p>
-              <hr class="jcard-divider">
-              <div class="jcard-meta">
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  서울 강남구
-                </span>
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  주 4일, 탄력근무
-                </span>
-              </div>
-              <div class="jcard-salary">시급 11,000원</div>
-              <div class="reason-sentence">
-                💡 도보 20분 거리로 출퇴근이 편리해요
-              </div>
-              <button class="jcard-cta cta-apply">지원하기</button>
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <!-- 공공 일자리 (5.7) -->
-      <div class="section-gap" style="margin-top:40px;">
-        <div class="section-header">
+      <!-- Right: 이벤트 배너 -->
+      <div class="hero-banner">
+        <div class="hero-banner-inner">
           <div>
-            <div class="section-title">공공 일자리</div>
-            <p style="font-size:14px; color:var(--color-neutral-600); margin-top:2px;">정부·지자체 운영 안정적인 일자리를 모아뒀어요</p>
+            <div class="hero-banner-tag">🎯 스카우트 제안</div>
+            <div class="hero-banner-title">당장 이직 생각 없어도<br>스카우트 제안은<br>받아보세요</div>
+            <button class="hero-banner-cta">프로필 등록하러 가기 →</button>
           </div>
-          <a href="#" class="section-more">
-            더보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </div>
-
-        <div class="jcard-grid">
-          <div class="jcard-wrap">
-            <article class="jcard" onclick="window.open('#')">
-              <div class="jcard-top">
-                <span class="np-badge badge-info np-badge-pill">공공기관</span>
-                <span class="deadline">D-8 마감</span>
-              </div>
-              <div class="jcard-title-row">
-                <h3 class="jcard-title">노인 복지관 사무 보조원</h3>
-                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                </button>
-              </div>
-              <p class="jcard-sub">강남구청 복지과</p>
-              <hr class="jcard-divider">
-              <div class="jcard-meta">
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>서울 강남구
-                </span>
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>주 5일
-                </span>
-              </div>
-              <div class="jcard-salary">월 160만원</div>
-              <div class="public-info"><strong>고령자 우대</strong> · 60세 이상 지원 가능</div>
-              <button class="jcard-cta cta-primary" onclick="event.stopPropagation();window.open('#')">공고 보기</button>
-            </article>
-          </div>
-
-          <div class="jcard-wrap">
-            <article class="jcard" onclick="window.open('#')">
-              <div class="jcard-top">
-                <span class="np-badge badge-info np-badge-pill">공공기관</span>
-                <span class="deadline">D-15 마감</span>
-              </div>
-              <div class="jcard-title-row">
-                <h3 class="jcard-title">도서관 자료 정리 도우미</h3>
-                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                </button>
-              </div>
-              <p class="jcard-sub">서울시 공공도서관</p>
-              <hr class="jcard-divider">
-              <div class="jcard-meta">
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>서울 전역
-                </span>
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>주 3일
-                </span>
-              </div>
-              <div class="jcard-salary">시급 10,030원</div>
-              <div class="public-info"><strong>50세 이상</strong> 지원 가능 · 경력 무관</div>
-              <button class="jcard-cta cta-primary" onclick="event.stopPropagation();window.open('#')">공고 보기</button>
-            </article>
-          </div>
-
-          <div class="jcard-wrap">
-            <article class="jcard" onclick="window.open('#')">
-              <div class="jcard-top">
-                <span class="np-badge badge-success np-badge-pill">노인일자리</span>
-                <span style="font-size:14px;color:var(--color-neutral-400)">상시모집</span>
-              </div>
-              <div class="jcard-title-row">
-                <h3 class="jcard-title">초등학교 급식 도우미 (사회서비스형)</h3>
-                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                </button>
-              </div>
-              <p class="jcard-sub">한국노인인력개발원</p>
-              <hr class="jcard-divider">
-              <div class="jcard-meta">
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>서울 전역
-                </span>
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>주 5일, 오전
-                </span>
-              </div>
-              <div class="jcard-salary">월 27만원</div>
-              <div class="public-info"><strong>만 65세 이상</strong> · 기초연금 수급자 우선</div>
-              <button class="jcard-cta cta-primary" onclick="event.stopPropagation();window.open('#')">공고 보기</button>
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <!-- 콘텐츠/가이드 (5.3) -->
-      <div class="section-gap" style="margin-top:40px;">
-        <div class="section-header">
-          <div class="section-title">취업 준비 가이드</div>
-          <span class="section-more">더보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-        <div class="content-grid">
-          <div class="content-card" onclick="location.href='#'">
-            <div class="content-category">이력서 작성</div>
-            <div class="content-title">경력이 많을수록 더 잘 써지는 이력서 작성법</div>
-            <div class="content-desc">오랜 경력을 강점으로 바꾸는 핵심 포인트를 알려드려요</div>
-          </div>
-          <div class="content-card" onclick="location.href='#'">
-            <div class="content-category">면접 준비</div>
-            <div class="content-title">50·60대를 위한 면접 꿀팁 10가지</div>
-            <div class="content-desc">자신감 있게 면접에 임할 수 있는 실전 준비 방법</div>
-          </div>
-          <div class="content-card" onclick="location.href='#'">
-            <div class="content-category">재취업 정보</div>
-            <div class="content-title">정부 지원 재취업 프로그램 총정리</div>
-            <div class="content-desc">무료로 받을 수 있는 교육과 지원금 정보를 확인하세요</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 공지/보도자료 (5.4) -->
-      <div class="section-gap" style="margin-top:40px;">
-        <div class="section-header">
-          <div class="section-title">소식</div>
-          <span class="section-more">더보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-        <div class="np-card elevated">
-          <div class="notice-list">
-            <div class="notice-item">
-              <span class="notice-tag">공지</span>
-              <span class="notice-text">2026년 상반기 노인일자리 사업 신청 안내</span>
-              <span class="notice-date">04.20</span>
-            </div>
-            <div class="notice-item">
-              <span class="notice-tag">공지</span>
-              <span class="notice-text">AI 이력서 서비스 업데이트 안내 (v2.0)</span>
-              <span class="notice-date">04.15</span>
-            </div>
-            <div class="notice-item">
-              <span class="notice-tag">보도</span>
-              <span class="notice-text">넥스트파트너, 50·60대 재취업 플랫폼으로 주목</span>
-              <span class="notice-date">04.10</span>
-            </div>
+          <div class="hero-banner-footer">
+            <span class="banner-pager">1 / 2</span>
+            <button class="banner-arrow-btn" aria-label="이전">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="banner-arrow-btn" aria-label="다음">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
           </div>
         </div>
       </div>
 
     </div>
+  </section>
+
+  <!-- ── AI 추천 일자리 ── -->
+  <section class="section-wrap" style="padding-top:0;">
+    <div class="ai-section-box">
+      <div class="ai-section-header">
+        <div class="ai-section-title">✨ <em>양인희</em>님께 딱 맞는 AI 추천 일자리입니다.</div>
+        <div class="ai-section-right">
+          <span class="ai-pager">2 · 1/2</span>
+          <button class="section-arrow-btn" aria-label="이전">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="section-arrow-btn" aria-label="다음">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <a href="#" class="np-section-more">AI 추천 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+        </div>
+      </div>
+      <p class="ai-section-desc">양인희님의 경험과 조건에 맞는 일자리를 AI가 에어 트로 분석하여 추천해드립니다.<br>일자리 추천 이유를 확인해보세요.</p>
+
+      <div class="jcard-grid">
+        <div class="jcard-wrap recommended">
+          <div class="jcard">
+            <div class="jcard-company-row">
+              <span class="jcard-company">기업명</span>
+              <span class="jcard-deadline">마감 D-3</span>
+            </div>
+            <div class="match-badge">매칭도 <span class="match-pct">89%</span></div>
+            <h3 class="jcard-title">영등포구 영동초 교실 미화1명 구인</h3>
+            <div class="jcard-meta">
+              <div class="meta-row">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                서울 적 4
+              </div>
+              <div class="meta-row">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                화/목/금/토 · 주 5일
+              </div>
+            </div>
+            <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
+            <ul class="jcard-reasons">
+              <li>관련 자격증 보유</li>
+              <li>주 4일 근무(화목금토) 일치</li>
+              <li>출퇴근 이내 30.3%</li>
+            </ul>
+            <button class="jcard-cta">세부사항 보기</button>
+          </div>
+        </div>
+
+        <div class="jcard-wrap recommended">
+          <div class="jcard">
+            <div class="jcard-company-row">
+              <span class="jcard-company">기업명</span>
+              <span class="jcard-deadline">마감 D-3</span>
+            </div>
+            <div class="match-badge">매칭도 <span class="match-pct">89%</span></div>
+            <h3 class="jcard-title">영등포구 영동초 교실 미화1명 구인</h3>
+            <div class="jcard-meta">
+              <div class="meta-row">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                서울 적 4
+              </div>
+              <div class="meta-row">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                화/목/금/토 · 주 5일
+              </div>
+            </div>
+            <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
+            <ul class="jcard-reasons">
+              <li>관련 자격증 보유</li>
+              <li>주 4일 근무(화목금토) 일치</li>
+              <li>출퇴근 이내 30.3%</li>
+            </ul>
+            <button class="jcard-cta">세부사항 보기</button>
+          </div>
+        </div>
+
+        <div class="jcard-wrap recommended">
+          <div class="jcard">
+            <div class="jcard-company-row">
+              <span class="jcard-company">기업명</span>
+              <span class="jcard-deadline">마감 D-3</span>
+            </div>
+            <div class="match-badge">매칭도 <span class="match-pct">89%</span></div>
+            <h3 class="jcard-title">영등포구 영동초 교실 미화1명 구인</h3>
+            <div class="jcard-meta">
+              <div class="meta-row">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                서울 적 4
+              </div>
+              <div class="meta-row">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                화/목/금/토 · 주 5일
+              </div>
+            </div>
+            <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
+            <ul class="jcard-reasons">
+              <li>관련 자격증 보유</li>
+              <li>주 4일 근무(화목금토) 일치</li>
+              <li>출퇴근 이내 30.3%</li>
+            </ul>
+            <button class="jcard-cta">세부사항 보기</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-section-footer">
+        <span class="ai-footer-text">마음에 드는 일자리를 찾지 못하셨나요?</span>
+        <div class="ai-footer-actions">
+          <button class="btn-sm-outline">새 이력서 생성</button>
+          <button class="btn-sm-outline">기존 이력서 수정</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 공공기관 일자리 ── -->
+  <section class="section-wrap" style="padding-top:0;">
+    <div class="np-section-header">
+      <div>
+        <div class="np-section-title-text">공공기관에서 제공하는 일자리를 확인해보세요.</div>
+        <div class="np-section-desc">공공기관에서 운영하는 안정적인 일자리입니다.<br>근무 조건과 지역에 가까운 일자리를 지원할 수 있습니다.</div>
+      </div>
+      <div class="section-with-arrows">
+        <button class="section-arrow-btn" aria-label="이전">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="section-arrow-btn" aria-label="다음">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <a href="#" class="np-section-more">공공 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      </div>
+    </div>
+
+    <div class="jcard-grid">
+      <div class="jcard-wrap">
+        <div class="jcard">
+          <div class="jcard-company-row">
+            <span class="jcard-company">기업명</span>
+            <span style="font-size:12px;color:var(--color-neutral-400)">마감 D~26-00-00</span>
+          </div>
+          <h3 class="jcard-title">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
+          <div class="jcard-meta">
+            <div class="meta-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              경기도 화성시 병원구
+            </div>
+          </div>
+          <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
+          <div class="jcard-reg-date">등록 26-00-00</div>
+          <button class="jcard-cta">세부사항 보기</button>
+        </div>
+      </div>
+
+      <div class="jcard-wrap">
+        <div class="jcard">
+          <div class="jcard-company-row">
+            <span class="jcard-company">기업명</span>
+            <span style="font-size:12px;color:var(--color-neutral-400)">마감 D~26-00-00</span>
+          </div>
+          <h3 class="jcard-title">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
+          <div class="jcard-meta">
+            <div class="meta-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              경기도 화성시 병원구
+            </div>
+          </div>
+          <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
+          <div class="jcard-reg-date">등록 26-00-00</div>
+          <button class="jcard-cta">세부사항 보기</button>
+        </div>
+      </div>
+
+      <div class="jcard-wrap">
+        <div class="jcard">
+          <div class="jcard-company-row">
+            <span class="jcard-company">기업명</span>
+            <span style="font-size:12px;color:var(--color-neutral-400)">마감 D~26-00-00</span>
+          </div>
+          <h3 class="jcard-title">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
+          <div class="jcard-meta">
+            <div class="meta-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              경기도 화성시 병원구
+            </div>
+          </div>
+          <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
+          <div class="jcard-reg-date">등록 26-00-00</div>
+          <button class="jcard-cta">세부사항 보기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-wrap -->
+
+<!-- ── 이벤트 배너 (full-width) ── -->
+<div class="event-banner-section">
+  <div class="page-wrap">
+    <div class="event-banner">이벤트 이미지 삽입</div>
   </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ── 구직 정보 ── -->
+  <section class="section-wrap">
+    <div class="np-section-header">
+      <div class="np-section-title-text">구직에 도움이 되는 정보를 확인해보세요.</div>
+      <a href="#" class="np-section-more">구직 정보 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div class="content-tabs">
+      <button class="content-tab active">전체</button>
+      <button class="content-tab">카테고리명</button>
+      <button class="content-tab">카테고리명</button>
+      <button class="content-tab">카테고리명</button>
+      <button class="content-tab">카테고리명</button>
+    </div>
+    <div class="content-grid">
+      <div class="content-card">
+        <div class="content-card-thumb">이미지 영역</div>
+        <div class="content-card-body">
+          <span class="content-card-badge">카테고리명</span>
+          <div class="content-card-title">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
+          <div class="content-card-date">28-04-01</div>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-thumb">이미지 영역</div>
+        <div class="content-card-body">
+          <span class="content-card-badge">카테고리명</span>
+          <div class="content-card-title">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
+          <div class="content-card-date">28-04-01</div>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-thumb">이미지 영역</div>
+        <div class="content-card-body">
+          <span class="content-card-badge">카테고리명</span>
+          <div class="content-card-title">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
+          <div class="content-card-date">28-04-01</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 일자리 관련 기사 ── -->
+  <section class="section-wrap" style="padding-top:0;">
+    <div class="np-section-header">
+      <div class="np-section-title-text">일자리 관련 기사를 확인해보세요.</div>
+      <a href="#" class="np-section-more">콘텐츠 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </div>
+    <div class="article-grid">
+      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+    </div>
+  </section>
+
+</div><!-- /page-wrap -->
 </main>
 
-<!-- 모바일 하단 내비게이션 (5.6) -->
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="page-wrap">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-notice-title">
+          공지사항
+          <a href="#" class="footer-notice-more">공지사항 더보기 &gt;</a>
+        </div>
+        <div class="notice-list">
+          <div class="notice-item">
+            <span class="notice-tag">공지</span>
+            <span class="notice-text">위치기반 서비스 이용약관</span>
+            <span class="notice-date">26-04-01</span>
+          </div>
+          <div class="notice-item">
+            <span class="notice-tag">공지</span>
+            <span class="notice-text">위치기반 서비스 이용약관</span>
+            <span class="notice-date">26-04-01</span>
+          </div>
+          <div class="notice-item">
+            <span class="notice-tag">공지</span>
+            <span class="notice-text">위치기반 서비스 이용약관</span>
+            <span class="notice-date">26-04-01</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-contact-title">
+          고객센터/제품문의
+          <a href="#" class="footer-contact-more">고객센터 바로가기 &gt;</a>
+        </div>
+        <div class="footer-contact-card">
+          <div class="footer-phone">
+            <div class="footer-phone-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            070-1234-5678
+          </div>
+          <div class="footer-hours">
+            <div>평일 오전 10시 ~ 17시 &nbsp;|&nbsp; 점심 12:30 ~ 14:00</div>
+            <div>주말/공휴일 휴무</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        <div class="footer-logo">
+          <div class="logo-mark"><span>N</span></div>
+          NextPartner
+        </div>
+        <div class="footer-corp-info">
+          중장년층을 위한 일자리 매칭 플랫폼<br>
+          주소 | (04538) 서울시 성동구 아차산로 216-46 (용답동) 213-86-08423<br>
+          tel | 02-6473-7736 &nbsp; 이메일 | test@nextpartner.kr<br>
+          © 2026 NextPartner. All rights reserved.
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-links-title">Support</div>
+        <a href="#" class="footer-link">고객센터</a>
+        <a href="#" class="footer-link">이력서등록이란?</a>
+        <a href="#" class="footer-link">기업서비스 이용안내</a>
+        <a href="#" class="footer-link">개인정보처리방침</a>
+        <a href="#" class="footer-link">이용약관</a>
+        <a href="#" class="footer-link">사이트맵</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── MOBILE BOTTOM NAV (DS: bottom-nav.html) ── -->
 <nav class="np-bnav" aria-label="하단 탐색">
   <div class="bnav-inner">
-    <a href="index.html" class="bnav-item active">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-      </svg>
+    <a href="#" class="bnav-item active">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       홈
     </a>
     <a href="#" class="bnav-item">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-      </svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       공고 찾기
     </a>
     <a href="#" class="bnav-item">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/>
-      </svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
       이력서
     </a>
     <a href="#" class="bnav-item">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-      </svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       내 계정
     </a>
   </div>
 </nav>
 
 <script>
-  // 저장 버튼 토글
-  document.querySelectorAll('.jcard-save').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      this.classList.toggle('saved');
+  document.querySelectorAll('.content-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.content-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
     });
   });
 </script>
