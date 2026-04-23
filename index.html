@@ -87,10 +87,10 @@
     .activity-more-btn { font-size: 14px; font-weight: 700; color: var(--color-primary-500); display: inline-flex; align-items: center; gap: 2px; border: none; background: none; cursor: pointer; font-family: var(--font-base); white-space: nowrap; }
     .activity-alert { background: var(--color-primary-50); border-radius: 6px; padding: 10px 14px; font-size: 18px; color: var(--color-primary-500); font-weight: 500; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
     .activity-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .activity-stat-item { display: flex; flex-direction: column; align-items: center; padding: 12px 8px; background: var(--color-neutral-50); border-radius: 6px; gap: 2px; }
-    .activity-stat-label { font-size: 13px; color: var(--color-neutral-600); }
-    .activity-stat-value { font-size: 22px; font-weight: 700; color: var(--color-primary-500); line-height: 1.2; }
-    .activity-stat-unit { font-size: 13px; font-weight: 400; color: var(--color-neutral-600); }
+    .activity-stat-item { display: flex; flex-direction: column; align-items: center; padding: 24px 8px; background: var(--color-neutral-50); border-radius: 6px; gap: 2px; }
+    .activity-stat-label { font-size: 18px; color: var(--color-neutral-600); }
+    .activity-stat-value { font-size: 28px; font-weight: 700; color: var(--color-primary-500); line-height: 1.2; }
+    .activity-stat-unit { font-size: 20px; font-weight: 400; color: var(--color-neutral-600); }
 
     /* 히어로 배너 */
     .hero-banner { border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%); }
@@ -114,7 +114,7 @@
     /* ── AI 추천 컨테이너 ── */
     .ai-section-box { background: var(--color-neutral-0); border: 1.5px solid var(--color-neutral-200); border-radius: 16px; padding: 28px; }
     .ai-section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; gap: 12px; flex-wrap: wrap; }
-    .ai-section-title { font-size: 18px; font-weight: 700; color: var(--color-neutral-900); line-height: 1.4; }
+    .ai-section-title { font-size:28px; font-weight: 700; color: var(--color-neutral-900); line-height: 1.4; }
     .ai-section-title em { font-style: normal; color: var(--color-primary-500); }
     .ai-section-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
     .ai-pager { font-size: 13px; color: var(--color-neutral-400); white-space: nowrap; }
@@ -127,12 +127,7 @@
     .btn-sm-outline:hover { border-color: var(--color-primary-500); color: var(--color-primary-500); }
 
     /* 잡카드 추가 슬롯 (DS에 없는 페이지 전용) */
-    .jcard-company-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-    .jcard-company { font-size: 13px; color: var(--color-neutral-400); }
-    .jcard-reasons { list-style: none; margin-bottom: 14px; display: flex; flex-direction: column; gap: 4px; }
-    .jcard-reasons li { font-size: 14px; color: var(--color-neutral-600); padding-left: 14px; position: relative; line-height: 1.5; }
-    .jcard-reasons li::before { content: '•'; position: absolute; left: 0; color: var(--color-primary-500); font-weight: 700; }
-    .jcard-reg-date { font-size: 13px; color: var(--color-neutral-400); margin-bottom: 12px; }
+    .jcard-company { font-size: 13px; color: var(--color-neutral-400); margin-bottom: 2px; }
 
     /* ── 이벤트 배너 ── */
     .event-banner-section { padding: 0 0 48px; }
@@ -147,7 +142,7 @@
     .thumb-card:hover { border-color: var(--color-neutral-400); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
     .thumb-card-img { width: 100%; height: 160px; background: var(--color-neutral-100); display: flex; align-items: center; justify-content: center; color: var(--color-neutral-400); font-size: 14px; }
     .thumb-card-body { padding: 16px; }
-    .thumb-card-date { font-size: 13px; color: var(--color-neutral-400); margin-top: 6px; }
+    .thumb-card-date { font-size: 16px; color: var(--color-neutral-400); margin-top: 6px; }
 
     /* ── 기사 그리드 ── */
     .article-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
@@ -155,8 +150,8 @@
     @media (max-width: 480px) { .article-grid { grid-template-columns: 1fr; } }
     .article-card { padding: 14px 16px; border: 1px solid var(--color-neutral-200); border-radius: var(--radius-card); cursor: pointer; transition: border-color .15s; }
     .article-card:hover { border-color: var(--color-neutral-400); }
-    .article-card-title { font-size: 14px; font-weight: 600; color: var(--color-neutral-900); line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
-    .article-card-source { font-size: 12px; color: var(--color-neutral-400); }
+    .article-card-title { font-size: 18px; font-weight: 600; color: var(--color-neutral-900); line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+    .article-card-source { font-size: 16px; color: var(--color-neutral-400); }
 
     /* ── 푸터 ── */
     .site-footer { background: var(--color-neutral-0); border-top: 1px solid var(--color-neutral-200); padding: 40px 0 32px; }
@@ -322,90 +317,108 @@
       <div class="jcard-grid">
 
         <div class="jcard-wrap recommended">
-          <div class="jcard">
-            <div class="jcard-company-row">
-              <span class="jcard-company">기업명</span>
-              <span class="deadline-urgent">마감 D-3</span>
+          <article class="jcard" role="article" aria-label="영등포구 영동초 교실 미화1명 구인">
+            <div class="jcard-top">
+              <span class="match-badge">매칭률&nbsp;<span class="match-pct">89%</span></span>
+              <span class="deadline deadline-urgent">마감 D-3</span>
             </div>
-            <!-- DS: match-badge (gradient) -->
-            <div class="match-badge">매칭도 <span class="match-pct">89%</span></div>
-            <h3 class="jcard-title">영등포구 영동초 교실 미화1명 구인</h3>
-            <!-- DS: jcard-meta / meta-item -->
+            <div class="jcard-title-row">
+              <h3 class="jcard-title">영등포구 영동초 교실 미화1명 구인</h3>
+              <button class="jcard-save" aria-label="공고 저장" title="저장" data-saved="false">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-neutral-400)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+              </button>
+            </div>
+            <hr class="jcard-divider">
             <div class="jcard-meta">
               <span class="meta-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                서울 적 4
+                서울 영등포구
               </span>
               <span class="meta-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                화/목/금/토 · 주 5일
+                화/목/금/토 · 주 4일
               </span>
             </div>
             <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
-            <ul class="jcard-reasons">
-              <li>관련 자격증 보유</li>
-              <li>주 4일 근무(화목금토) 일치</li>
-              <li>출퇴근 이내 30.3%</li>
-            </ul>
-            <!-- DS: jcard-cta cta-primary -->
-            <button class="jcard-cta cta-primary">자세히보기</button>
-          </div>
+            <div class="jcard-extra">
+              <ul style="list-style:none;padding:0;margin:0">
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:16px;font-weight:700;color:var(--color-primary-500);line-height:1.5;margin-bottom:4px"><span style="margin-top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-primary-500);flex-shrink:0;display:block"></span><span>관련 자격증 보유</span></li>
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:16px;font-weight:700;color:var(--color-primary-500);line-height:1.5;margin-bottom:4px"><span style="margin-top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-primary-500);flex-shrink:0;display:block"></span><span>주 4일 근무(화목금토) 일치</span></li>
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:16px;font-weight:700;color:var(--color-primary-500);line-height:1.5;margin-bottom:4px"><span style="margin-top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-primary-500);flex-shrink:0;display:block"></span><span>출퇴근 이내 30.3%</span></li>
+              </ul>
+            </div>
+            <button class="jcard-cta cta-primary">자세히 보기</button>
+          </article>
         </div>
 
         <div class="jcard-wrap recommended">
-          <div class="jcard">
-            <div class="jcard-company-row">
-              <span class="jcard-company">기업명</span>
-              <span class="deadline-urgent">마감 D-3</span>
+          <article class="jcard" role="article" aria-label="영등포구 영동초 교실 미화1명 구인">
+            <div class="jcard-top">
+              <span class="match-badge">매칭률&nbsp;<span class="match-pct">89%</span></span>
+              <span class="deadline deadline-urgent">마감 D-3</span>
             </div>
-            <div class="match-badge">매칭도 <span class="match-pct">89%</span></div>
-            <h3 class="jcard-title">영등포구 영동초 교실 미화1명 구인</h3>
+            <div class="jcard-title-row">
+              <h3 class="jcard-title">영등포구 영동초 교실 미화1명 구인</h3>
+              <button class="jcard-save" aria-label="공고 저장" title="저장" data-saved="false">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-neutral-400)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+              </button>
+            </div>
+            <hr class="jcard-divider">
             <div class="jcard-meta">
               <span class="meta-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                서울 적 4
+                서울 영등포구
               </span>
               <span class="meta-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                화/목/금/토 · 주 5일
+                화/목/금/토 · 주 4일
               </span>
             </div>
             <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
-            <ul class="jcard-reasons">
-              <li>관련 자격증 보유</li>
-              <li>주 4일 근무(화목금토) 일치</li>
-              <li>출퇴근 이내 30.3%</li>
-            </ul>
-            <button class="jcard-cta cta-primary">자세히보기</button>
-          </div>
+            <div class="jcard-extra">
+              <ul style="list-style:none;padding:0;margin:0">
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:16px;font-weight:700;color:var(--color-primary-500);line-height:1.5;margin-bottom:4px"><span style="margin-top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-primary-500);flex-shrink:0;display:block"></span><span>관련 자격증 보유</span></li>
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:16px;font-weight:700;color:var(--color-primary-500);line-height:1.5;margin-bottom:4px"><span style="margin-top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-primary-500);flex-shrink:0;display:block"></span><span>주 4일 근무(화목금토) 일치</span></li>
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:16px;font-weight:700;color:var(--color-primary-500);line-height:1.5;margin-bottom:4px"><span style="margin-top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-primary-500);flex-shrink:0;display:block"></span><span>출퇴근 이내 30.3%</span></li>
+              </ul>
+            </div>
+            <button class="jcard-cta cta-primary">자세히 보기</button>
+          </article>
         </div>
 
         <div class="jcard-wrap recommended">
-          <div class="jcard">
-            <div class="jcard-company-row">
-              <span class="jcard-company">기업명</span>
-              <span class="deadline-urgent">마감 D-3</span>
+          <article class="jcard" role="article" aria-label="영등포구 영동초 교실 미화1명 구인">
+            <div class="jcard-top">
+              <span class="match-badge">매칭률&nbsp;<span class="match-pct">89%</span></span>
+              <span class="deadline deadline-urgent">마감 D-3</span>
             </div>
-            <div class="match-badge">매칭도 <span class="match-pct">89%</span></div>
-            <h3 class="jcard-title">영등포구 영동초 교실 미화1명 구인</h3>
+            <div class="jcard-title-row">
+              <h3 class="jcard-title">영등포구 영동초 교실 미화1명 구인</h3>
+              <button class="jcard-save" aria-label="공고 저장" title="저장" data-saved="false">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-neutral-400)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+              </button>
+            </div>
+            <hr class="jcard-divider">
             <div class="jcard-meta">
               <span class="meta-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                서울 적 4
+                서울 영등포구
               </span>
               <span class="meta-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                화/목/금/토 · 주 5일
+                화/목/금/토 · 주 4일
               </span>
             </div>
             <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
-            <ul class="jcard-reasons">
-              <li>관련 자격증 보유</li>
-              <li>주 4일 근무(화목금토) 일치</li>
-              <li>출퇴근 이내 30.3%</li>
-            </ul>
-            <button class="jcard-cta cta-primary">세부사항 보기</button>
-          </div>
+            <div class="jcard-extra">
+              <ul style="list-style:none;padding:0;margin:0">
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:16px;font-weight:700;color:var(--color-primary-500);line-height:1.5;margin-bottom:4px"><span style="margin-top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-primary-500);flex-shrink:0;display:block"></span><span>관련 자격증 보유</span></li>
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:16px;font-weight:700;color:var(--color-primary-500);line-height:1.5;margin-bottom:4px"><span style="margin-top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-primary-500);flex-shrink:0;display:block"></span><span>주 4일 근무(화목금토) 일치</span></li>
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:16px;font-weight:700;color:var(--color-primary-500);line-height:1.5;margin-bottom:4px"><span style="margin-top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-primary-500);flex-shrink:0;display:block"></span><span>출퇴근 이내 30.3%</span></li>
+              </ul>
+            </div>
+            <button class="jcard-cta cta-primary">자세히 보기</button>
+          </article>
         </div>
 
       </div>
@@ -571,14 +584,14 @@
       </div>
       <div class="np-section-body">
         <div class="article-grid">
-          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">출처명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">출처명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">출처명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">출처명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">출처명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">출처명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">출처명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">출처명</div></div>
         </div>
       </div><!-- /np-section-body -->
     </div><!-- /np-section-container -->
