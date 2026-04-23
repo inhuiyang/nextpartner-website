@@ -135,7 +135,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.3;
 }
 .np-section-desc {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--color-neutral-600);
   margin-top: 4px;
 }
@@ -586,17 +586,20 @@ img { max-width: 100%; display: block; }
 .jcard-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 12px;
-  margin-bottom: 10px;
+  gap: 6px 14px;
+  margin-bottom: 12px;
 }
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-size: 14px;
   color: var(--color-neutral-600);
 }
-.meta-item svg { flex-shrink: 0; color: var(--color-neutral-400); }
+.meta-item svg {
+  flex-shrink: 0;
+  color: var(--color-neutral-400);
+}
 .jcard-salary {
   font-size: 18px;
   font-weight: 700;
