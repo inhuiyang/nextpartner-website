@@ -102,6 +102,68 @@ img { max-width: 100%; display: block; }
 .section-gap { margin-bottom: var(--space-10); }
 
 /* ─────────────────────────────────────────────
+   DS: NP SECTION CONTAINER (section-container.html)
+───────────────────────────────────────────── */
+.np-section-container {
+  width: 100%;
+  max-width: 1212px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+@media (max-width: 768px) {
+  .np-section-container { padding: 0 16px; }
+}
+.np-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.np-section-label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary-500);
+  margin-bottom: 4px;
+}
+.np-section-title-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-neutral-900);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.np-section-desc {
+  font-size: 16px;
+  color: var(--color-neutral-600);
+  margin-top: 4px;
+}
+.np-section-more {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary-500);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 4px 0;
+  font-family: var(--font-base);
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.np-section-more:hover { color: var(--color-primary-700); }
+.np-section-body { width: 100%; }
+.np-section-container.with-divider .np-section-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-neutral-200);
+  margin-bottom: 20px;
+}
+
+/* ─────────────────────────────────────────────
    HEADER (DESKTOP)
 ───────────────────────────────────────────── */
 .np-header {

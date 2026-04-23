@@ -10,14 +10,6 @@
 
     body { background: var(--color-neutral-0); }
 
-    .page-wrap {
-      width: 100%;
-      max-width: 1212px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-    @media (max-width: 768px) { .page-wrap { padding: 0 16px; } }
-
     /* 로고 마크 */
     .logo-mark {
       width: 28px; height: 28px; border-radius: 50%;
@@ -240,10 +232,10 @@
 </header>
 
 <main>
-<div class="page-wrap">
 
   <!-- ── 히어로 ── -->
   <section class="hero-section">
+    <div class="np-section-container">
     <div class="hero-inner">
 
       <!-- 좌: 타이틀 + 활동 카드 -->
@@ -303,10 +295,12 @@
       </div>
 
     </div>
+    </div><!-- /np-section-container -->
   </section>
 
   <!-- ── AI 추천 일자리 ── -->
   <section class="section-wrap" style="padding-top:0;">
+    <div class="np-section-container">
     <div class="ai-section-box">
       <div class="ai-section-header">
         <div class="ai-section-title">✨ <em>양인희</em>님께 딱 맞는 AI 추천 일자리입니다.</div>
@@ -422,167 +416,177 @@
           <button class="btn-sm-outline">기존 이력서 수정</button>
         </div>
       </div>
-    </div>
+    </div><!-- /ai-section-box -->
+    </div><!-- /np-section-container -->
   </section>
 
   <!-- ── 공공기관 일자리 (DS: section-container.html) ── -->
   <section class="section-wrap" style="padding-top:0;">
-    <div class="np-section-header">
-      <div>
-        <div class="np-section-title-text">공공기관에서 제공하는 일자리를 확인해보세요.</div>
-        <div class="np-section-desc">공공기관에서 운영하는 안정적인 일자리입니다.<br>근무 조건과 지역에 가까운 일자리를 지원할 수 있습니다.</div>
-      </div>
-      <div class="section-with-arrows">
-        <button class="section-arrow-btn" aria-label="이전">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="section-arrow-btn" aria-label="다음">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-        <a href="#" class="np-section-more">공공 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      </div>
-    </div>
-
-    <div class="jcard-grid">
-
-      <div class="jcard-wrap">
-        <div class="jcard">
-          <div class="jcard-company-row">
-            <span class="jcard-company">기업명</span>
-            <span style="font-size:13px;color:var(--color-neutral-400)">마감 D~26-00-00</span>
-          </div>
-          <h3 class="jcard-title">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
-          <div class="jcard-meta">
-            <span class="meta-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              경기도 화성시 병원구
-            </span>
-          </div>
-          <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
-          <div class="jcard-reg-date">등록 26-00-00</div>
-          <button class="jcard-cta cta-primary">세부사항 보기</button>
+    <div class="np-section-container">
+      <div class="np-section-header">
+        <div class="np-section-header-left">
+          <div class="np-section-title-text">공공기관에서 제공하는 일자리를 확인해보세요.</div>
+          <div class="np-section-desc">공공기관에서 운영하는 안정적인 일자리입니다.<br>근무 조건과 지역에 가까운 일자리를 지원할 수 있습니다.</div>
+        </div>
+        <div class="section-with-arrows">
+          <button class="section-arrow-btn" aria-label="이전">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="section-arrow-btn" aria-label="다음">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <a href="#" class="np-section-more">공공 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
         </div>
       </div>
+      <div class="np-section-body">
+        <div class="jcard-grid">
 
-      <div class="jcard-wrap">
-        <div class="jcard">
-          <div class="jcard-company-row">
-            <span class="jcard-company">기업명</span>
-            <span style="font-size:13px;color:var(--color-neutral-400)">마감 D~26-00-00</span>
+          <div class="jcard-wrap">
+            <div class="jcard">
+              <div class="jcard-company-row">
+                <span class="jcard-company">기업명</span>
+                <span style="font-size:13px;color:var(--color-neutral-400)">마감 D~26-00-00</span>
+              </div>
+              <h3 class="jcard-title">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
+              <div class="jcard-meta">
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  경기도 화성시 병원구
+                </span>
+              </div>
+              <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
+              <div class="jcard-reg-date">등록 26-00-00</div>
+              <button class="jcard-cta cta-primary">세부사항 보기</button>
+            </div>
           </div>
-          <h3 class="jcard-title">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
-          <div class="jcard-meta">
-            <span class="meta-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              경기도 화성시 병원구
-            </span>
+
+          <div class="jcard-wrap">
+            <div class="jcard">
+              <div class="jcard-company-row">
+                <span class="jcard-company">기업명</span>
+                <span style="font-size:13px;color:var(--color-neutral-400)">마감 D~26-00-00</span>
+              </div>
+              <h3 class="jcard-title">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
+              <div class="jcard-meta">
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  경기도 화성시 병원구
+                </span>
+              </div>
+              <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
+              <div class="jcard-reg-date">등록 26-00-00</div>
+              <button class="jcard-cta cta-primary">세부사항 보기</button>
+            </div>
           </div>
-          <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
-          <div class="jcard-reg-date">등록 26-00-00</div>
-          <button class="jcard-cta cta-primary">세부사항 보기</button>
+
+          <div class="jcard-wrap">
+            <div class="jcard">
+              <div class="jcard-company-row">
+                <span class="jcard-company">기업명</span>
+                <span style="font-size:13px;color:var(--color-neutral-400)">마감 D~26-00-00</span>
+              </div>
+              <h3 class="jcard-title">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
+              <div class="jcard-meta">
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  경기도 화성시 병원구
+                </span>
+              </div>
+              <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
+              <div class="jcard-reg-date">등록 26-00-00</div>
+              <button class="jcard-cta cta-primary">세부사항 보기</button>
+            </div>
+          </div>
+
         </div>
-      </div>
-
-      <div class="jcard-wrap">
-        <div class="jcard">
-          <div class="jcard-company-row">
-            <span class="jcard-company">기업명</span>
-            <span style="font-size:13px;color:var(--color-neutral-400)">마감 D~26-00-00</span>
-          </div>
-          <h3 class="jcard-title">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
-          <div class="jcard-meta">
-            <span class="meta-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              경기도 화성시 병원구
-            </span>
-          </div>
-          <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
-          <div class="jcard-reg-date">등록 26-00-00</div>
-          <button class="jcard-cta cta-primary">세부사항 보기</button>
-        </div>
-      </div>
-
-    </div>
+      </div><!-- /np-section-body -->
+    </div><!-- /np-section-container -->
   </section>
-
-</div><!-- /page-wrap -->
 
 <!-- ── 이벤트 배너 ── -->
 <div class="event-banner-section">
-  <div class="page-wrap">
+  <div class="np-section-container">
     <div class="event-banner">이벤트 이미지 삽입</div>
   </div>
 </div>
 
-<div class="page-wrap">
-
   <!-- ── 구직 정보 (DS: np-chip 탭 활용) ── -->
   <section class="section-wrap">
-    <div class="np-section-header">
-      <div class="np-section-title-text">구직에 도움이 되는 정보를 확인해보세요.</div>
-      <a href="#" class="np-section-more">구직 정보 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-    </div>
-    <!-- DS: np-chip-row / np-chip.active -->
-    <div class="np-chip-row content-tabs">
-      <button class="np-chip active">전체</button>
-      <button class="np-chip">카테고리명</button>
-      <button class="np-chip">카테고리명</button>
-      <button class="np-chip">카테고리명</button>
-      <button class="np-chip">카테고리명</button>
-    </div>
-    <div class="content-grid">
-      <div class="thumb-card">
-        <div class="thumb-card-img">이미지 영역</div>
-        <div class="thumb-card-body">
-          <!-- DS: np-badge badge-primary np-badge-pill -->
-          <span class="np-badge badge-primary np-badge-pill" style="margin-bottom:8px;">카테고리명</span>
-          <div class="content-title">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
-          <div class="thumb-card-date">28-04-01</div>
+    <div class="np-section-container">
+      <div class="np-section-header">
+        <div class="np-section-header-left">
+          <div class="np-section-title-text">구직에 도움이 되는 정보를 확인해보세요.</div>
         </div>
+        <a href="#" class="np-section-more">구직 정보 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       </div>
-      <div class="thumb-card">
-        <div class="thumb-card-img">이미지 영역</div>
-        <div class="thumb-card-body">
-          <span class="np-badge badge-primary np-badge-pill" style="margin-bottom:8px;">카테고리명</span>
-          <div class="content-title">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
-          <div class="thumb-card-date">28-04-01</div>
+      <div class="np-section-body">
+        <!-- DS: np-chip-row / np-chip.active -->
+        <div class="np-chip-row content-tabs">
+          <button class="np-chip active">전체</button>
+          <button class="np-chip">카테고리명</button>
+          <button class="np-chip">카테고리명</button>
+          <button class="np-chip">카테고리명</button>
+          <button class="np-chip">카테고리명</button>
         </div>
-      </div>
-      <div class="thumb-card">
-        <div class="thumb-card-img">이미지 영역</div>
-        <div class="thumb-card-body">
-          <span class="np-badge badge-primary np-badge-pill" style="margin-bottom:8px;">카테고리명</span>
-          <div class="content-title">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
-          <div class="thumb-card-date">28-04-01</div>
+        <div class="content-grid">
+          <div class="thumb-card">
+            <div class="thumb-card-img">이미지 영역</div>
+            <div class="thumb-card-body">
+              <!-- DS: np-badge badge-primary np-badge-pill -->
+              <span class="np-badge badge-primary np-badge-pill" style="margin-bottom:8px;">카테고리명</span>
+              <div class="content-title">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
+              <div class="thumb-card-date">28-04-01</div>
+            </div>
+          </div>
+          <div class="thumb-card">
+            <div class="thumb-card-img">이미지 영역</div>
+            <div class="thumb-card-body">
+              <span class="np-badge badge-primary np-badge-pill" style="margin-bottom:8px;">카테고리명</span>
+              <div class="content-title">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
+              <div class="thumb-card-date">28-04-01</div>
+            </div>
+          </div>
+          <div class="thumb-card">
+            <div class="thumb-card-img">이미지 영역</div>
+            <div class="thumb-card-body">
+              <span class="np-badge badge-primary np-badge-pill" style="margin-bottom:8px;">카테고리명</span>
+              <div class="content-title">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
+              <div class="thumb-card-date">28-04-01</div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </div><!-- /np-section-body -->
+    </div><!-- /np-section-container -->
   </section>
 
   <!-- ── 일자리 관련 기사 ── -->
   <section class="section-wrap" style="padding-top:0;">
-    <div class="np-section-header">
-      <div class="np-section-title-text">일자리 관련 기사를 확인해보세요.</div>
-      <a href="#" class="np-section-more">콘텐츠 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-    </div>
-    <div class="article-grid">
-      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-      <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
-    </div>
+    <div class="np-section-container">
+      <div class="np-section-header">
+        <div class="np-section-header-left">
+          <div class="np-section-title-text">일자리 관련 기사를 확인해보세요.</div>
+        </div>
+        <a href="#" class="np-section-more">콘텐츠 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      </div>
+      <div class="np-section-body">
+        <div class="article-grid">
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+          <div class="article-card"><div class="article-card-title">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div><div class="article-card-source">사이트명</div></div>
+        </div>
+      </div><!-- /np-section-body -->
+    </div><!-- /np-section-container -->
   </section>
-
-</div><!-- /page-wrap -->
 </main>
 
 <!-- ── 푸터 ── -->
 <footer class="site-footer">
-  <div class="page-wrap">
+  <div class="np-section-container">
     <div class="footer-inner">
       <div>
         <div class="footer-block-title">
