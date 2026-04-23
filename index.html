@@ -71,7 +71,8 @@
     /* ── 히어로 ── */
     .hero-section { padding: 48px 0 40px; background: var(--color-neutral-0); }
     @media (max-width: 768px) { .hero-section { padding: 28px 0 24px; } }
-    .hero-inner { display: grid; grid-template-columns: 1fr 400px; gap: 40px; align-items: start; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 400px; gap: 40px; align-items: stretch; }
+    .hero-inner > div:first-child { display: flex; flex-direction: column; }
     @media (max-width: 1024px) { .hero-inner { grid-template-columns: 1fr 320px; gap: 24px; } }
     @media (max-width: 768px) { .hero-inner { grid-template-columns: 1fr; } }
     .hero-title { font-size: 32px; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; color: var(--color-neutral-900); margin-bottom: 28px; }
@@ -79,7 +80,7 @@
     @media (max-width: 768px) { .hero-title { font-size: 26px; margin-bottom: 20px; } }
 
     /* 활동 카드 (DS home/index.html - activity-card) */
-    .activity-card { background: var(--color-neutral-0); border: 2px solid var(--color-primary-500); border-radius: var(--radius-card); padding: 20px; }
+    .activity-card { background: var(--color-neutral-0); border: 2px solid var(--color-primary-500); border-radius: var(--radius-card); padding: 20px; margin-top: auto; }
     .activity-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .activity-greeting { font-size: 24px; font-weight: 700; color: var(--color-neutral-900); }
     .activity-greeting em { font-style: normal; color: var(--color-primary-500); }
@@ -92,7 +93,7 @@
     .activity-stat-unit { font-size: 13px; font-weight: 400; color: var(--color-neutral-600); }
 
     /* 히어로 배너 */
-    .hero-banner { border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%); }
+    .hero-banner { border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%); height: 100%; box-sizing: border-box; }
     .hero-banner-inner { padding: 32px 28px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; }
     .hero-banner-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.12); color: #fff; border-radius: var(--radius-pill); padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; margin-bottom: 16px; width: fit-content; }
     .hero-banner-title { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.4; letter-spacing: -0.02em; margin-bottom: 24px; }
