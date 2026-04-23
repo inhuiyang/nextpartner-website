@@ -8,6 +8,16 @@
   <style>
     /* ── 페이지 전용 스타일 (styles.css에 없는 것만) ── */
 
+    body { background: var(--color-neutral-0); }
+
+    .page-wrap {
+      width: 100%;
+      max-width: 1212px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    @media (max-width: 768px) { .page-wrap { padding: 0 16px; } }
+
     /* 로고 마크 */
     .logo-mark {
       width: 28px; height: 28px; border-radius: 50%;
