@@ -26,9 +26,30 @@
     }
     .logo-mark span { font-size: 12px; font-weight: 800; color: #fff; line-height: 1; }
 
-    /* 헤더 로고에 flex 적용 */
+    /* 헤더 로고 flex */
     .np-header-logo, .np-header-mobile-logo {
       display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ── 헤더 반응형 ── */
+
+    /* 데스크탑 헤더: 1212px 이하에서 패딩 축소 */
+    @media (max-width: 1212px) {
+      .np-header { padding: 0 24px; gap: 20px; }
+    }
+
+    /* 태블릿(900px~768px): 네비 아이템 폰트·패딩 축소 */
+    @media (max-width: 900px) {
+      .np-header { padding: 0 20px; gap: 12px; }
+      .np-header-nav { gap: 2px; }
+      .np-header-nav-item { font-size: 13px; padding: 0 10px; }
+      .np-header-action { font-size: 13px; padding: 0 8px; }
+    }
+
+    /* 모바일(<768px): 데스크탑 헤더 숨기고 모바일 헤더 표시 */
+    @media (max-width: 768px) {
+      .np-header { display: none; }
+      .np-header-mobile { display: block; }
     }
 
     /* 모바일 헤더 상단 행 */
@@ -54,10 +75,6 @@
       font-family: var(--font-base); transition: all .12s;
     }
     .mobile-nav-item.active { color: #fff; font-weight: 700; background: var(--color-primary-500); border-color: var(--color-primary-500); }
-    @media (max-width: 768px) {
-      .np-header { display: none; }
-      .np-header-mobile { display: block; }
-    }
 
     /* ── 히어로 ── */
     .hero-section { padding: 48px 0 40px; background: var(--color-neutral-0); }
@@ -72,10 +89,10 @@
     /* 활동 카드 (DS home/index.html - activity-card) */
     .activity-card { background: var(--color-neutral-0); border: 2px solid var(--color-primary-500); border-radius: var(--radius-card); padding: 20px; }
     .activity-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-    .activity-greeting { font-size: 16px; font-weight: 700; color: var(--color-neutral-900); }
+    .activity-greeting { font-size: 24px; font-weight: 700; color: var(--color-neutral-900); }
     .activity-greeting em { font-style: normal; color: var(--color-primary-500); }
     .activity-more-btn { font-size: 14px; font-weight: 700; color: var(--color-primary-500); display: inline-flex; align-items: center; gap: 2px; border: none; background: none; cursor: pointer; font-family: var(--font-base); white-space: nowrap; }
-    .activity-alert { background: var(--color-primary-50); border-radius: 6px; padding: 10px 14px; font-size: 14px; color: var(--color-primary-500); font-weight: 500; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+    .activity-alert { background: var(--color-primary-50); border-radius: 6px; padding: 10px 14px; font-size: 18px; color: var(--color-primary-500); font-weight: 500; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
     .activity-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .activity-stat-item { display: flex; flex-direction: column; align-items: center; padding: 12px 8px; background: var(--color-neutral-50); border-radius: 6px; gap: 2px; }
     .activity-stat-label { font-size: 13px; color: var(--color-neutral-600); }
