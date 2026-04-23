@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>넥스트파트너 — AI 맞춤 시니어 일자리</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ─── 홈 전용 스타일 ─── */
+    .home-main { padding: 32px 0 60px; }
+
+    /* AI 추천 배너 */
+    .ai-hero {
+      background: linear-gradient(135deg, #fff4f1 0%, #f5edeb 100%);
+      border-radius: var(--radius-card);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 600px) {
+      .ai-hero { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+    }
+    .ai-hero-text {}
+    .ai-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-primary-500);
+      margin-bottom: 8px;
+    }
+    .ai-hero-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-neutral-900);
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+    .ai-hero-desc {
+      font-size: 15px;
+      color: var(--color-neutral-600);
+      line-height: 1.6;
+    }
+    .ai-hero-illust {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: var(--color-primary-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 38px;
+    }
+  </style>
+</head>
+<body>
+<!-- 데스크탑 헤더 -->
+<header class="np-header">
+  <a href="index.html" class="np-header-logo">넥스트파트너</a>
+  <nav class="np-header-nav" aria-label="주요 메뉴">
+    <a href="jobs.html?tab=ai" class="np-header-nav-item active">AI 추천 일자리</a>
+    <a href="jobs.html?tab=general" class="np-header-nav-item">일반 일자리</a>
+    <a href="jobs.html?tab=public" class="np-header-nav-item">공공 일자리</a>
+  </nav>
+  <div class="np-header-actions">
+    <button class="np-header-action icon-only" aria-label="알림">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
+      </svg>
+    </button>
+    <div class="np-header-divider"></div>
+    <a href="mypage.html" class="np-header-action">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+      </svg>
+      내 계정
+    </a>
+    <a href="login.html" class="np-header-action" style="color:var(--color-neutral-400)">로그아웃</a>
+  </div>
+</header>
+
+<!-- 모바일 헤더 -->
+<header class="np-header-mobile">
+  <a href="index.html" class="np-header-mobile-logo">넥스트파트너</a>
+  <div class="np-header-mobile-actions">
+    <button class="np-header-icon-btn" aria-label="알림">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
+      </svg>
+    </button>
+    <a href="mypage.html" class="np-header-icon-btn" aria-label="내 계정">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<!-- 메인 컨텐츠 -->
+<main>
+  <div class="page-wrap">
+    <div class="home-main">
+
+      <!-- 이벤트 배너 (5.2) -->
+      <div class="section-gap" style="margin-bottom:24px;">
+        <div class="banner-track" style="gap:12px; display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none;">
+          <div class="banner-item" style="scroll-snap-align:start; flex-shrink:0; min-width:calc(100% - 32px);" onclick="location.href='#'">
+            <div class="banner-bg banner-1" style="min-height:160px; border-radius:12px; padding:24px;">
+              <div class="banner-content">
+                <div class="banner-label">🎯 이벤트</div>
+                <div class="banner-title">AI 이력서 무료 진단<br>지금 바로 시작하세요!</div>
+                <div class="banner-sub">나의 경력을 AI가 분석해드립니다</div>
+              </div>
+            </div>
+          </div>
+          <div class="banner-item" style="scroll-snap-align:start; flex-shrink:0; min-width:calc(100% - 32px);" onclick="location.href='#'">
+            <div class="banner-bg banner-2" style="min-height:160px; border-radius:12px; padding:24px;">
+              <div class="banner-content">
+                <div class="banner-label">📚 가이드</div>
+                <div class="banner-title">면접 준비, 어렵지 않아요<br>AI 면접 코칭 신청</div>
+                <div class="banner-sub">50·60대 맞춤 면접 팁 제공</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI 이력서 CTA (5.5) - 이력서 0개인 경우 -->
+      <div class="section-gap resume-cta-card">
+        <div class="resume-cta-text">
+          <div class="resume-cta-title">✨ AI 이력서를 만들어보세요</div>
+          <div class="resume-cta-desc">질문에 답하기만 하면 AI가<br>이력서와 자기소개서를 써드려요</div>
+        </div>
+        <div class="resume-cta-actions">
+          <a href="resume.html" class="np-btn np-btn-primary np-btn-lg" style="white-space:nowrap;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/>
+            </svg>
+            AI 이력서 만들기
+          </a>
+        </div>
+      </div>
+
+      <!-- AI 추천 공고 (5.1) -->
+      <div class="section-gap" style="margin-top:32px;">
+        <div class="section-header">
+          <div class="section-title">
+            <span style="background:var(--gradient-ai); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">AI 맞춤 추천 일자리</span>
+          </div>
+          <a href="jobs.html?tab=ai" class="section-more">
+            더보기
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <p style="font-size:14px; color:var(--color-neutral-600); margin-bottom:16px;">김영자님의 경력과 희망 조건에 맞는 공고를 추천해드렸어요</p>
+
+        <div class="jcard-grid">
+          <!-- 추천 공고 1 -->
+          <div class="jcard-wrap recommended">
+            <article class="jcard" onclick="location.href='job-detail.html'">
+              <div class="jcard-top">
+                <span class="match-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  AI 추천 <span class="match-pct">94%</span>
+                </span>
+                <span class="deadline">D-5 마감</span>
+              </div>
+              <div class="jcard-title-row">
+                <h3 class="jcard-title">카페 홀서빙 직원 모집 (시니어 환영)</h3>
+                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </button>
+              </div>
+              <p class="jcard-sub">투썸플레이스 강남역점</p>
+              <hr class="jcard-divider">
+              <div class="jcard-meta">
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  서울 강남구
+                </span>
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  주 5일, 09:00~15:00
+                </span>
+              </div>
+              <div class="jcard-salary">시급 10,030원 <span class="salary-note">주휴수당 포함</span></div>
+              <div class="reason-sentence">
+                💡 서비스업 10년 경력과 강남구 근무 희망 조건이 딱 맞아요
+              </div>
+              <button class="jcard-cta cta-apply">지원하기</button>
+            </article>
+          </div>
+
+          <!-- 추천 공고 2 -->
+          <div class="jcard-wrap recommended">
+            <article class="jcard" onclick="location.href='job-detail.html'">
+              <div class="jcard-top">
+                <span class="match-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  AI 추천 <span class="match-pct">88%</span>
+                </span>
+                <span class="deadline">D-12 마감</span>
+              </div>
+              <div class="jcard-title-row">
+                <h3 class="jcard-title">아파트 관리사무소 행정보조</h3>
+                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </button>
+              </div>
+              <p class="jcard-sub">강남 래미안 관리단</p>
+              <hr class="jcard-divider">
+              <div class="jcard-meta">
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  서울 강남구
+                </span>
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  주 5일, 오전
+                </span>
+              </div>
+              <div class="jcard-salary">월 180만원</div>
+              <div class="reason-sentence">
+                💡 사무행정 경력과 오전 근무 희망이 잘 맞아요
+              </div>
+              <button class="jcard-cta cta-apply">지원하기</button>
+            </article>
+          </div>
+
+          <!-- 추천 공고 3 -->
+          <div class="jcard-wrap recommended">
+            <article class="jcard" onclick="location.href='job-detail.html'">
+              <div class="jcard-top">
+                <span class="match-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  AI 추천 <span class="match-pct">82%</span>
+                </span>
+                <span class="deadline">D-20 마감</span>
+              </div>
+              <div class="jcard-title-row">
+                <h3 class="jcard-title">마트 계산원 (정규직 전환 가능)</h3>
+                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </button>
+              </div>
+              <p class="jcard-sub">홈플러스 역삼점</p>
+              <hr class="jcard-divider">
+              <div class="jcard-meta">
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  서울 강남구
+                </span>
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  주 4일, 탄력근무
+                </span>
+              </div>
+              <div class="jcard-salary">시급 11,000원</div>
+              <div class="reason-sentence">
+                💡 도보 20분 거리로 출퇴근이 편리해요
+              </div>
+              <button class="jcard-cta cta-apply">지원하기</button>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- 공공 일자리 (5.7) -->
+      <div class="section-gap" style="margin-top:40px;">
+        <div class="section-header">
+          <div>
+            <div class="section-title">공공 일자리</div>
+            <p style="font-size:14px; color:var(--color-neutral-600); margin-top:2px;">정부·지자체 운영 안정적인 일자리를 모아뒀어요</p>
+          </div>
+          <a href="jobs.html?tab=public" class="section-more">
+            더보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+
+        <div class="jcard-grid">
+          <div class="jcard-wrap">
+            <article class="jcard" onclick="window.open('#')">
+              <div class="jcard-top">
+                <span class="np-badge badge-info np-badge-pill">공공기관</span>
+                <span class="deadline">D-8 마감</span>
+              </div>
+              <div class="jcard-title-row">
+                <h3 class="jcard-title">노인 복지관 사무 보조원</h3>
+                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </button>
+              </div>
+              <p class="jcard-sub">강남구청 복지과</p>
+              <hr class="jcard-divider">
+              <div class="jcard-meta">
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>서울 강남구
+                </span>
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>주 5일
+                </span>
+              </div>
+              <div class="jcard-salary">월 160만원</div>
+              <div class="public-info"><strong>고령자 우대</strong> · 60세 이상 지원 가능</div>
+              <button class="jcard-cta cta-primary" onclick="event.stopPropagation();window.open('#')">공고 보기</button>
+            </article>
+          </div>
+
+          <div class="jcard-wrap">
+            <article class="jcard" onclick="window.open('#')">
+              <div class="jcard-top">
+                <span class="np-badge badge-info np-badge-pill">공공기관</span>
+                <span class="deadline">D-15 마감</span>
+              </div>
+              <div class="jcard-title-row">
+                <h3 class="jcard-title">도서관 자료 정리 도우미</h3>
+                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </button>
+              </div>
+              <p class="jcard-sub">서울시 공공도서관</p>
+              <hr class="jcard-divider">
+              <div class="jcard-meta">
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>서울 전역
+                </span>
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>주 3일
+                </span>
+              </div>
+              <div class="jcard-salary">시급 10,030원</div>
+              <div class="public-info"><strong>50세 이상</strong> 지원 가능 · 경력 무관</div>
+              <button class="jcard-cta cta-primary" onclick="event.stopPropagation();window.open('#')">공고 보기</button>
+            </article>
+          </div>
+
+          <div class="jcard-wrap">
+            <article class="jcard" onclick="window.open('#')">
+              <div class="jcard-top">
+                <span class="np-badge badge-success np-badge-pill">노인일자리</span>
+                <span style="font-size:14px;color:var(--color-neutral-400)">상시모집</span>
+              </div>
+              <div class="jcard-title-row">
+                <h3 class="jcard-title">초등학교 급식 도우미 (사회서비스형)</h3>
+                <button class="jcard-save" onclick="event.stopPropagation();this.classList.toggle('saved')" aria-label="저장">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </button>
+              </div>
+              <p class="jcard-sub">한국노인인력개발원</p>
+              <hr class="jcard-divider">
+              <div class="jcard-meta">
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>서울 전역
+                </span>
+                <span class="meta-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>주 5일, 오전
+                </span>
+              </div>
+              <div class="jcard-salary">월 27만원</div>
+              <div class="public-info"><strong>만 65세 이상</strong> · 기초연금 수급자 우선</div>
+              <button class="jcard-cta cta-primary" onclick="event.stopPropagation();window.open('#')">공고 보기</button>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- 콘텐츠/가이드 (5.3) -->
+      <div class="section-gap" style="margin-top:40px;">
+        <div class="section-header">
+          <div class="section-title">취업 준비 가이드</div>
+          <span class="section-more">더보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="content-grid">
+          <div class="content-card" onclick="location.href='#'">
+            <div class="content-category">이력서 작성</div>
+            <div class="content-title">경력이 많을수록 더 잘 써지는 이력서 작성법</div>
+            <div class="content-desc">오랜 경력을 강점으로 바꾸는 핵심 포인트를 알려드려요</div>
+          </div>
+          <div class="content-card" onclick="location.href='#'">
+            <div class="content-category">면접 준비</div>
+            <div class="content-title">50·60대를 위한 면접 꿀팁 10가지</div>
+            <div class="content-desc">자신감 있게 면접에 임할 수 있는 실전 준비 방법</div>
+          </div>
+          <div class="content-card" onclick="location.href='#'">
+            <div class="content-category">재취업 정보</div>
+            <div class="content-title">정부 지원 재취업 프로그램 총정리</div>
+            <div class="content-desc">무료로 받을 수 있는 교육과 지원금 정보를 확인하세요</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 공지/보도자료 (5.4) -->
+      <div class="section-gap" style="margin-top:40px;">
+        <div class="section-header">
+          <div class="section-title">소식</div>
+          <span class="section-more">더보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="np-card elevated">
+          <div class="notice-list">
+            <div class="notice-item">
+              <span class="notice-tag">공지</span>
+              <span class="notice-text">2026년 상반기 노인일자리 사업 신청 안내</span>
+              <span class="notice-date">04.20</span>
+            </div>
+            <div class="notice-item">
+              <span class="notice-tag">공지</span>
+              <span class="notice-text">AI 이력서 서비스 업데이트 안내 (v2.0)</span>
+              <span class="notice-date">04.15</span>
+            </div>
+            <div class="notice-item">
+              <span class="notice-tag">보도</span>
+              <span class="notice-text">넥스트파트너, 50·60대 재취업 플랫폼으로 주목</span>
+              <span class="notice-date">04.10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- 모바일 하단 내비게이션 (5.6) -->
+<nav class="np-bnav" aria-label="하단 탐색">
+  <div class="bnav-inner">
+    <a href="index.html" class="bnav-item active">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      홈
+    </a>
+    <a href="jobs.html" class="bnav-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      공고 찾기
+    </a>
+    <a href="resume.html" class="bnav-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/>
+      </svg>
+      이력서
+    </a>
+    <a href="mypage.html" class="bnav-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+      </svg>
+      내 계정
+    </a>
+  </div>
+</nav>
+
+<script>
+  // 저장 버튼 토글
+  document.querySelectorAll('.jcard-save').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.classList.toggle('saved');
+    });
+  });
+</script>
+</body>
+</html>
