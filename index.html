@@ -80,26 +80,26 @@
     @media (max-width: 768px) { .hero-title { font-size: 26px; margin-bottom: 20px; } }
 
     /* 활동 카드 (DS home/index.html - activity-card) */
-    .activity-card { background: var(--color-neutral-0); border: 2px solid var(--color-primary-500); border-radius: var(--radius-card); padding: 20px; height: 320px; box-sizing: border-box; overflow-y: auto; }
-    .activity-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-    .activity-greeting { font-size: 24px; font-weight: 700; color: var(--color-neutral-900); }
+    .activity-card { background: var(--color-warm-grey-50); border-radius: var(--radius-card); padding: 16px; height: 240px; box-sizing: border-box; overflow: hidden; }
+    .activity-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .activity-greeting { font-size: 28px; font-weight: 700; color: var(--color-neutral-900); }
     .activity-greeting em { font-style: normal; color: var(--color-primary-500); }
-    .activity-more-btn { font-size: 14px; font-weight: 700; color: var(--color-primary-500); display: inline-flex; align-items: center; gap: 2px; border: none; background: none; cursor: pointer; font-family: var(--font-base); white-space: nowrap; }
-    .activity-alert { background: var(--color-primary-50); border-radius: 6px; padding: 10px 14px; font-size: 18px; color: var(--color-primary-500); font-weight: 500; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+    .activity-more-btn { font-size: 13px; font-weight: 700; color: var(--color-primary-500); display: inline-flex; align-items: center; gap: 2px; border: none; background: none; cursor: pointer; font-family: var(--font-base); white-space: nowrap; }
+    .activity-alert { background: var(--color-primary-50); border: 2px solid var(--color-primary-500); border-radius: 6px; padding: 8px 12px; font-size: 18px; color: var(--color-primary-500); font-weight: 500; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
     .activity-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .activity-stat-item { display: flex; flex-direction: column; align-items: center; padding: 24px 8px; background: var(--color-neutral-50); border-radius: 6px; gap: 2px; }
-    .activity-stat-label { font-size: 18px; color: var(--color-neutral-600); }
+    .activity-stat-item { display: flex; flex-direction: column; align-items: center; padding: 10px 8px; background: var(--color-neutral-0); border-radius: 6px; gap: 2px; }
+    .activity-stat-label { font-size: 16px; color: var(--color-neutral-600); }
     .activity-stat-value { font-size: 28px; font-weight: 700; color: var(--color-primary-500); line-height: 1.2; }
-    .activity-stat-unit { font-size: 20px; font-weight: 400; color: var(--color-neutral-600); }
+    .activity-stat-unit { font-size: 14px; font-weight: 400; color: var(--color-neutral-600); }
 
     /* 히어로 배너 */
-    .hero-banner { border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%); }
-    .hero-banner-inner { padding: 32px 28px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; height: 320px; box-sizing: border-box; }
-    .hero-banner-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.12); color: #fff; border-radius: var(--radius-pill); padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; margin-bottom: 16px; width: fit-content; }
-    .hero-banner-title { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.4; letter-spacing: -0.02em; margin-bottom: 24px; }
-    .hero-banner-cta { display: inline-flex; align-items: center; gap: 4px; height: 40px; padding: 0 20px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: var(--radius-button); color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; font-family: var(--font-base); transition: background .12s; width: fit-content; }
+    .hero-banner { border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%); height: 240px; box-sizing: border-box; }
+    .hero-banner-inner { padding: 20px 24px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+    .hero-banner-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.12); color: #fff; border-radius: var(--radius-pill); padding: 4px 12px; font-size: 12px; font-weight: 700; letter-spacing: .04em; margin-bottom: 10px; width: fit-content; }
+    .hero-banner-title { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.4; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .hero-banner-cta { display: inline-flex; align-items: center; gap: 4px; height: 36px; padding: 0 16px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: var(--radius-button); color: #fff; font-size: 13px; font-weight: 700; cursor: pointer; font-family: var(--font-base); transition: background .12s; width: fit-content; }
     .hero-banner-cta:hover { background: rgba(255,255,255,.25); }
-    .hero-banner-footer { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+    .hero-banner-footer { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
     .banner-pager { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.6); }
     .banner-arrow-btn { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(255,255,255,.8); transition: background .12s; font-family: var(--font-base); }
     .banner-arrow-btn:hover { background: rgba(255,255,255,.25); }
@@ -118,7 +118,7 @@
     .ai-section-title em { font-style: normal; color: var(--color-primary-500); }
     .ai-section-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
     .ai-pager { font-size: 13px; color: var(--color-neutral-400); white-space: nowrap; }
-    .ai-section-desc { font-size: 14px; color: var(--color-neutral-600); margin-bottom: 20px; line-height: 1.6; }
+    .ai-section-desc { font-size: 18px; color: var(--color-neutral-600); margin-bottom: 20px; line-height: 1.6; }
     .ai-section-footer { margin-top: 16px; padding: 16px 20px; background: var(--color-neutral-50); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .ai-footer-text { font-size: 14px; color: var(--color-neutral-600); }
     .ai-footer-actions { display: flex; gap: 8px; }
@@ -156,7 +156,6 @@
     .footer-inner { display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
     @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; } }
     .footer-block-title { font-size: 14px; font-weight: 700; color: var(--color-neutral-900); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
-    .footer-more-link { font-size: 13px; font-weight: 700; color: var(--color-primary-500); cursor: pointer; }
     .footer-contact-card { background: var(--color-primary-50); border: 1px solid var(--color-primary-100); border-radius: var(--radius-card); padding: 20px; }
     .footer-phone { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 700; color: var(--color-neutral-900); margin-bottom: 10px; }
     .footer-phone-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary-500); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -306,7 +305,7 @@
           <button class="section-arrow-btn" aria-label="다음">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
-          <a href="#" class="np-section-more">AI 추천 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+          <a href="#" class="np-btn np-btn-ghost np-btn-md">AI 추천 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
         </div>
       </div>
       <p class="ai-section-desc">양인희님의 경험과 조건에 맞는 일자리를 AI가 분석하여 추천해드립니다.<br>일자리 추천 이유를 확인해보세요.</p>
@@ -328,14 +327,8 @@
             </div>
             <hr class="jcard-divider">
             <div class="jcard-meta">
-              <span class="meta-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                서울 영등포구
-              </span>
-              <span class="meta-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                화/목/금/토 · 주 4일
-              </span>
+              <span class="meta-item">서울 영등포구</span>
+              <span class="meta-item">화/목/금/토 · 주 4일</span>
             </div>
             <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
             <div class="jcard-extra">
@@ -363,14 +356,8 @@
             </div>
             <hr class="jcard-divider">
             <div class="jcard-meta">
-              <span class="meta-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                서울 영등포구
-              </span>
-              <span class="meta-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                화/목/금/토 · 주 4일
-              </span>
+              <span class="meta-item">서울 영등포구</span>
+              <span class="meta-item">화/목/금/토 · 주 4일</span>
             </div>
             <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
             <div class="jcard-extra">
@@ -398,14 +385,8 @@
             </div>
             <hr class="jcard-divider">
             <div class="jcard-meta">
-              <span class="meta-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                서울 영등포구
-              </span>
-              <span class="meta-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                화/목/금/토 · 주 4일
-              </span>
+              <span class="meta-item">서울 영등포구</span>
+              <span class="meta-item">화/목/금/토 · 주 4일</span>
             </div>
             <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
             <div class="jcard-extra">
@@ -447,7 +428,7 @@
           <button class="section-arrow-btn" aria-label="다음">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
-          <a href="#" class="np-section-more">공공 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+          <a href="#" class="np-btn np-btn-ghost np-btn-md">공공 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
         </div>
       </div>
       <div class="np-section-body">
@@ -467,10 +448,7 @@
               </div>
               <hr class="jcard-divider">
               <div class="jcard-meta">
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  경기도 화성시 병원구
-                </span>
+                <span class="meta-item">경기도 화성시 병원구</span>
               </div>
               <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
               <div class="jcard-extra reserved"></div>
@@ -492,10 +470,7 @@
               </div>
               <hr class="jcard-divider">
               <div class="jcard-meta">
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  경기도 화성시 병원구
-                </span>
+                <span class="meta-item">경기도 화성시 병원구</span>
               </div>
               <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
               <div class="jcard-extra reserved"></div>
@@ -517,10 +492,7 @@
               </div>
               <hr class="jcard-divider">
               <div class="jcard-meta">
-                <span class="meta-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  경기도 화성시 병원구
-                </span>
+                <span class="meta-item">경기도 화성시 병원구</span>
               </div>
               <div class="jcard-salary">연봉 3,000만원 ~ 3,500만원</div>
               <div class="jcard-extra reserved"></div>
@@ -547,7 +519,7 @@
         <div class="np-section-header-left">
           <div class="np-section-title-text">구직에 도움이 되는 정보를 확인해보세요.</div>
         </div>
-        <a href="#" class="np-section-more">구직 정보 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+        <a href="#" class="np-btn np-btn-ghost np-btn-md">구직 정보 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       </div>
       <div class="np-section-body">
         <!-- DS: np-chip-row / np-chip.active -->
@@ -596,7 +568,7 @@
         <div class="np-section-header-left">
           <div class="np-section-title-text">일자리 관련 기사를 확인해보세요.</div>
         </div>
-        <a href="#" class="np-section-more">콘텐츠 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+        <a href="#" class="np-btn np-btn-ghost np-btn-md">콘텐츠 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       </div>
       <div class="np-section-body">
         <div class="article-grid">
@@ -621,7 +593,7 @@
       <div>
         <div class="footer-block-title">
           공지사항
-          <a href="#" class="footer-more-link">공지사항 더보기 &gt;</a>
+          <a href="#" class="np-btn np-btn-ghost np-btn-md">공지사항 더보기 &gt;</a>
         </div>
         <!-- DS: notice-list / notice-item / notice-tag / notice-text / notice-date -->
         <div class="notice-list">
@@ -645,7 +617,7 @@
       <div>
         <div class="footer-block-title">
           고객센터/제품문의
-          <a href="#" class="footer-more-link">고객센터 바로가기 &gt;</a>
+          <a href="#" class="np-btn np-btn-ghost np-btn-md">고객센터 바로가기 &gt;</a>
         </div>
         <div class="footer-contact-card">
           <div class="footer-phone">
