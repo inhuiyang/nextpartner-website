@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>넥스트파트너 — 중장년 맞춤 AI 일자리 (Tailwind)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50:  '#fff4f1',
+              100: '#ffe3dc',
+              300: '#ffb89f',
+              400: '#ff9a7a',
+              500: '#ff7f65',
+            },
+            neutral: {
+              0:   '#ffffff',
+              50:  '#f5f5f5',
+              100: '#f0f0f0',
+              200: '#e5e5e5',
+              400: '#999999',
+              600: '#666666',
+              700: '#4a4a4a',
+              800: '#333333',
+              900: '#1a1a1a',
+            },
+            'warm-grey': { 50: '#f8f4f3' },
+          },
+          fontFamily: {
+            base: ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Apple SD Gothic Neo', 'sans-serif'],
+          },
+          borderRadius: {
+            btn:  '8px',
+            card: '8px',
+            pill: '9999px',
+          },
+          maxWidth: {
+            section: '1212px',
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      *, *::before, *::after { box-sizing: border-box; }
+      body { font-family: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif; }
+      a { text-decoration: none; color: inherit; }
+      button { font-family: inherit; }
+    }
+    @layer utilities {
+      /* gradient text (clip) */
+      .gradient-text {
+        background: linear-gradient(135deg, #ff7f65, #f43f5e, #a855f7, #3b82f6, #06b6d4, #34d399);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      /* gradient background (logo mark, match badge) */
+      .gradient-bg {
+        background: linear-gradient(135deg, #ff7f65, #f43f5e, #a855f7, #3b82f6, #06b6d4, #34d399);
+      }
+      /* hide scrollbar */
+      .no-scrollbar { scrollbar-width: none; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+    }
+    @layer components {
+      /* ghost button (np-btn-ghost np-btn-md) */
+      .btn-ghost {
+        @apply inline-flex items-center gap-1 h-10 px-4 text-sm font-bold text-primary-500 bg-transparent rounded-btn cursor-pointer hover:bg-primary-50 transition-colors whitespace-nowrap;
+      }
+      /* section container */
+      .section-container {
+        @apply w-full max-w-section mx-auto px-10;
+      }
+      /* jcard */
+      .jcard {
+        @apply flex flex-col bg-neutral-0 border border-neutral-200 rounded-card p-4 h-full;
+      }
+      /* recommended jcard gradient border */
+      .jcard-recommended {
+        position: relative;
+        border-radius: 10px;
+      }
+      .jcard-recommended::before {
+        content: '';
+        position: absolute;
+        inset: -1.5px;
+        border-radius: 11px;
+        background: linear-gradient(135deg, #ff7f65, #f43f5e, #a855f7, #3b82f6);
+        z-index: 0;
+      }
+      .jcard-recommended > article {
+        position: relative;
+        z-index: 1;
+        border: none !important;
+      }
+      /* jcard grid */
+      .jcard-grid {
+        @apply grid gap-5;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      /* match badge */
+      .match-badge {
+        @apply inline-flex items-center h-[22px] px-2 gradient-bg text-white text-xs font-bold rounded-pill;
+      }
+      /* deadline */
+      .deadline { @apply text-xs font-bold text-neutral-400; }
+      .deadline-urgent { @apply text-xs font-bold text-rose-500; }
+      /* notice item */
+      .notice-item {
+        @apply flex items-center gap-3 py-2.5 border-b border-neutral-100 text-sm;
+      }
+      .notice-item:last-child { @apply border-b-0; }
+    }
+  </style>
+</head>
+<body class="bg-neutral-0 text-neutral-900 font-base">
+
+<!-- ── DESKTOP HEADER ── -->
+<header class="hidden md:flex items-center h-14 px-10 bg-neutral-0 border-b border-neutral-200 sticky top-0 z-50 gap-8">
+  <a href="#" class="flex items-center gap-2 font-bold text-base text-neutral-900 shrink-0">
+    <div class="w-7 h-7 rounded-full gradient-bg flex items-center justify-center shrink-0">
+      <span class="text-xs font-extrabold text-white leading-none">N</span>
+    </div>
+    NextPartner
+  </a>
+  <nav class="flex items-center gap-1 flex-1" aria-label="주요 메뉴">
+    <a href="#" class="text-sm font-medium text-neutral-700 hover:text-primary-500 px-3 h-14 flex items-center transition-colors">서비스 소개</a>
+    <div class="w-px h-4 bg-neutral-200 mx-1 shrink-0"></div>
+    <a href="#" class="text-sm font-semibold text-primary-500 px-3 h-14 flex items-center border-b-2 border-primary-500">AI 추천 일자리</a>
+    <a href="#" class="text-sm font-medium text-neutral-700 hover:text-primary-500 px-3 h-14 flex items-center transition-colors">공공 일자리</a>
+    <a href="#" class="text-sm font-medium text-neutral-700 hover:text-primary-500 px-3 h-14 flex items-center transition-colors">일반 일자리</a>
+  </nav>
+  <div class="flex items-center gap-1">
+    <button class="w-9 h-9 flex items-center justify-center text-neutral-600 hover:text-neutral-900 rounded-lg" aria-label="알림">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+    </button>
+    <div class="w-px h-4 bg-neutral-200 mx-1 shrink-0"></div>
+    <a href="#" class="flex items-center gap-1 text-sm font-medium text-neutral-700 hover:text-primary-500 px-2 h-9 transition-colors">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      내 계정
+    </a>
+    <a href="#" class="flex items-center gap-1 text-sm font-medium text-neutral-400 hover:text-neutral-600 px-2 h-9 transition-colors">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      로그아웃
+    </a>
+  </div>
+</header>
+
+<!-- ── MOBILE HEADER ── -->
+<header class="md:hidden bg-neutral-0 border-b border-neutral-200 sticky top-0 z-50" aria-label="모바일 헤더">
+  <div class="flex items-center justify-between h-14 px-5">
+    <a href="#" class="flex items-center gap-2 font-bold text-base text-neutral-900">
+      <div class="w-7 h-7 rounded-full gradient-bg flex items-center justify-center shrink-0">
+        <span class="text-xs font-extrabold text-white leading-none">N</span>
+      </div>
+      NextPartner
+    </a>
+    <div class="flex items-center gap-1">
+      <button class="w-10 h-10 flex items-center justify-center text-neutral-600" aria-label="알림">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      </button>
+      <a href="#" class="w-10 h-10 flex items-center justify-center text-neutral-600" aria-label="내 계정">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+    </div>
+  </div>
+  <nav class="flex overflow-x-auto no-scrollbar border-t border-neutral-200 px-3 py-2 gap-1.5" aria-label="카테고리">
+    <button class="inline-flex items-center h-[34px] px-3.5 text-sm font-medium text-neutral-700 rounded-btn border border-neutral-200 bg-neutral-0 cursor-pointer whitespace-nowrap shrink-0 transition-all">서비스 소개</button>
+    <button class="inline-flex items-center h-[34px] px-3.5 text-sm font-bold text-white rounded-btn border border-primary-500 bg-primary-500 cursor-pointer whitespace-nowrap shrink-0">AI 추천 일자리</button>
+    <button class="inline-flex items-center h-[34px] px-3.5 text-sm font-medium text-neutral-700 rounded-btn border border-neutral-200 bg-neutral-0 cursor-pointer whitespace-nowrap shrink-0 transition-all">공공 일자리</button>
+    <button class="inline-flex items-center h-[34px] px-3.5 text-sm font-medium text-neutral-700 rounded-btn border border-neutral-200 bg-neutral-0 cursor-pointer whitespace-nowrap shrink-0 transition-all">일반 일자리</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ── 히어로 ── -->
+  <section class="py-12 md:pt-12 md:pb-10 bg-neutral-0">
+    <div class="section-container">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-10 items-end">
+
+        <!-- 좌: 타이틀 + 활동 카드 -->
+        <div class="flex flex-col">
+          <h1 class="text-[32px] font-bold leading-[1.3] tracking-[-0.02em] text-neutral-900 mb-7">
+            중장년 맞춤 일자리,<br>
+            <em class="not-italic gradient-text">+AI파트너</em>가 구직 과정을
+            쉽고 간편하게 도와드립니다.
+          </h1>
+
+          <!-- 활동 카드 -->
+          <div class="bg-warm-grey-50 rounded-card p-4 h-60 overflow-hidden box-border">
+            <div class="flex items-center justify-between mb-2.5">
+              <div class="text-[28px] font-bold text-neutral-900">
+                <em class="not-italic text-primary-500">양인희</em>님, 안녕하세요.
+              </div>
+              <button class="text-[13px] font-bold text-primary-500 inline-flex items-center gap-0.5 border-none bg-transparent cursor-pointer whitespace-nowrap">
+                나의 활동 현황
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <div class="bg-primary-50 border-2 border-primary-500 rounded-[6px] px-3 py-2 text-sm text-primary-500 font-medium mb-2.5 flex items-center gap-1.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              오늘 체크된 면접 일정이 <strong class="ml-0.5">1건</strong> 있습니다.
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              <div class="flex flex-col items-center py-2.5 px-2 bg-neutral-0 rounded-[6px] gap-0.5">
+                <span class="text-base text-neutral-600">지원 현황</span>
+                <span class="text-[28px] font-bold text-primary-500 leading-[1.2]">2<span class="text-sm font-normal text-neutral-600">건</span></span>
+              </div>
+              <div class="flex flex-col items-center py-2.5 px-2 bg-neutral-0 rounded-[6px] gap-0.5">
+                <span class="text-base text-neutral-600">면접 현황</span>
+                <span class="text-[28px] font-bold text-primary-500 leading-[1.2]">1<span class="text-sm font-normal text-neutral-600">건</span></span>
+              </div>
+              <div class="flex flex-col items-center py-2.5 px-2 bg-neutral-0 rounded-[6px] gap-0.5">
+                <span class="text-base text-neutral-600">이력서</span>
+                <span class="text-[28px] font-bold text-primary-500 leading-[1.2]">2<span class="text-sm font-normal text-neutral-600">건</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우: 이벤트 배너 -->
+        <div class="rounded-xl overflow-hidden flex flex-col h-60 box-border" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%);">
+          <div class="px-6 py-5 flex-1 flex flex-col justify-between box-border">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill text-xs font-bold tracking-[0.04em] text-white mb-2.5 w-fit" style="background: rgba(255,255,255,.12);">
+                🎯 스카우트 제안
+              </div>
+              <div class="text-lg font-bold text-white leading-[1.4] tracking-[-0.02em] mb-3">
+                당장 이직 생각 없어도<br>스카우트 제안은<br>받아보세요
+              </div>
+              <button class="inline-flex items-center gap-1 h-9 px-4 text-[13px] font-bold text-white rounded-btn cursor-pointer transition-colors w-fit" style="background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);" onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+                프로필 등록하러 가기 →
+              </button>
+            </div>
+            <div class="flex items-center justify-end gap-2">
+              <span class="text-xs font-bold" style="color: rgba(255,255,255,.6);">1 / 2</span>
+              <button class="w-7 h-7 rounded-full flex items-center justify-center cursor-pointer transition-colors" style="background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.8);" aria-label="이전">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button class="w-7 h-7 rounded-full flex items-center justify-center cursor-pointer transition-colors" style="background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.8);" aria-label="다음">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AI 추천 일자리 ── -->
+  <section class="pb-12">
+    <div class="section-container">
+      <div class="bg-neutral-0 border border-neutral-200 rounded-2xl p-7">
+        <!-- 헤더 -->
+        <div class="flex items-center justify-between mb-1.5 gap-3 flex-wrap">
+          <div class="text-[28px] font-bold text-neutral-900 leading-[1.4]">
+            ✨ <em class="not-italic text-primary-500">양인희</em>님께 딱 맞는 AI 추천 일자리입니다.
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-[13px] text-neutral-400 whitespace-nowrap">2 · 1/2</span>
+            <button class="w-8 h-8 rounded-full border border-neutral-200 bg-neutral-0 flex items-center justify-center cursor-pointer text-neutral-600 hover:border-primary-500 hover:text-primary-500 transition-all" aria-label="이전">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="w-8 h-8 rounded-full border border-neutral-200 bg-neutral-0 flex items-center justify-center cursor-pointer text-neutral-600 hover:border-primary-500 hover:text-primary-500 transition-all" aria-label="다음">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <a href="#" class="btn-ghost">AI 추천 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+          </div>
+        </div>
+        <p class="text-lg text-neutral-600 mb-5 leading-relaxed">양인희님의 경험과 조건에 맞는 일자리를 AI가 분석하여 추천해드립니다.<br>일자리 추천 이유를 확인해보세요.</p>
+
+        <!-- 카드 그리드 -->
+        <div class="jcard-grid">
+
+          <!-- AI 추천 카드 -->
+          <div class="jcard-recommended">
+            <article class="jcard" role="article" aria-label="영등포구 영동초 교실 미화1명 구인">
+              <div class="flex items-center justify-between mb-2">
+                <span class="match-badge">매칭률&nbsp;<span class="font-extrabold">89%</span></span>
+                <span class="deadline deadline-urgent">마감 D-3</span>
+              </div>
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-base font-bold text-neutral-900 leading-snug">영등포구 영동초 교실 미화1명 구인</h3>
+                <button class="shrink-0 p-0.5 border-none bg-transparent cursor-pointer" aria-label="공고 저장">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+                </button>
+              </div>
+              <hr class="border-neutral-200 my-2">
+              <div class="flex flex-wrap gap-x-3 gap-y-1.5 mb-3 text-sm text-neutral-600">
+                <span>서울 영등포구</span>
+                <span>화/목/금/토 · 주 4일</span>
+              </div>
+              <div class="text-sm font-bold text-neutral-900 mb-2">연봉 3,000만원 ~ 3,500만원</div>
+              <div class="flex-1 mb-3">
+                <ul class="list-none p-0 m-0 space-y-1">
+                  <li class="flex gap-2 items-start text-base font-bold text-primary-500 leading-snug">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 block"></span>
+                    <span>관련 자격증 보유</span>
+                  </li>
+                  <li class="flex gap-2 items-start text-base font-bold text-primary-500 leading-snug">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 block"></span>
+                    <span>주 4일 근무(화목금토) 일치</span>
+                  </li>
+                  <li class="flex gap-2 items-start text-base font-bold text-primary-500 leading-snug">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 block"></span>
+                    <span>출퇴근 이내 30.3%</span>
+                  </li>
+                </ul>
+              </div>
+              <button class="w-full h-10 bg-primary-500 hover:bg-primary-400 text-white rounded-btn text-sm font-bold cursor-pointer transition-colors">자세히 보기</button>
+            </article>
+          </div>
+
+          <div class="jcard-recommended">
+            <article class="jcard" role="article" aria-label="영등포구 영동초 교실 미화1명 구인">
+              <div class="flex items-center justify-between mb-2">
+                <span class="match-badge">매칭률&nbsp;<span class="font-extrabold">89%</span></span>
+                <span class="deadline deadline-urgent">마감 D-3</span>
+              </div>
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-base font-bold text-neutral-900 leading-snug">영등포구 영동초 교실 미화1명 구인</h3>
+                <button class="shrink-0 p-0.5 border-none bg-transparent cursor-pointer" aria-label="공고 저장">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+                </button>
+              </div>
+              <hr class="border-neutral-200 my-2">
+              <div class="flex flex-wrap gap-x-3 gap-y-1.5 mb-3 text-sm text-neutral-600">
+                <span>서울 영등포구</span>
+                <span>화/목/금/토 · 주 4일</span>
+              </div>
+              <div class="text-sm font-bold text-neutral-900 mb-2">연봉 3,000만원 ~ 3,500만원</div>
+              <div class="flex-1 mb-3">
+                <ul class="list-none p-0 m-0 space-y-1">
+                  <li class="flex gap-2 items-start text-base font-bold text-primary-500 leading-snug">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 block"></span>
+                    <span>관련 자격증 보유</span>
+                  </li>
+                  <li class="flex gap-2 items-start text-base font-bold text-primary-500 leading-snug">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 block"></span>
+                    <span>주 4일 근무(화목금토) 일치</span>
+                  </li>
+                  <li class="flex gap-2 items-start text-base font-bold text-primary-500 leading-snug">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 block"></span>
+                    <span>출퇴근 이내 30.3%</span>
+                  </li>
+                </ul>
+              </div>
+              <button class="w-full h-10 bg-primary-500 hover:bg-primary-400 text-white rounded-btn text-sm font-bold cursor-pointer transition-colors">자세히 보기</button>
+            </article>
+          </div>
+
+          <div class="jcard-recommended">
+            <article class="jcard" role="article" aria-label="영등포구 영동초 교실 미화1명 구인">
+              <div class="flex items-center justify-between mb-2">
+                <span class="match-badge">매칭률&nbsp;<span class="font-extrabold">89%</span></span>
+                <span class="deadline deadline-urgent">마감 D-3</span>
+              </div>
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-base font-bold text-neutral-900 leading-snug">영등포구 영동초 교실 미화1명 구인</h3>
+                <button class="shrink-0 p-0.5 border-none bg-transparent cursor-pointer" aria-label="공고 저장">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+                </button>
+              </div>
+              <hr class="border-neutral-200 my-2">
+              <div class="flex flex-wrap gap-x-3 gap-y-1.5 mb-3 text-sm text-neutral-600">
+                <span>서울 영등포구</span>
+                <span>화/목/금/토 · 주 4일</span>
+              </div>
+              <div class="text-sm font-bold text-neutral-900 mb-2">연봉 3,000만원 ~ 3,500만원</div>
+              <div class="flex-1 mb-3">
+                <ul class="list-none p-0 m-0 space-y-1">
+                  <li class="flex gap-2 items-start text-base font-bold text-primary-500 leading-snug">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 block"></span>
+                    <span>관련 자격증 보유</span>
+                  </li>
+                  <li class="flex gap-2 items-start text-base font-bold text-primary-500 leading-snug">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 block"></span>
+                    <span>주 4일 근무(화목금토) 일치</span>
+                  </li>
+                  <li class="flex gap-2 items-start text-base font-bold text-primary-500 leading-snug">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0 block"></span>
+                    <span>출퇴근 이내 30.3%</span>
+                  </li>
+                </ul>
+              </div>
+              <button class="w-full h-10 bg-primary-500 hover:bg-primary-400 text-white rounded-btn text-sm font-bold cursor-pointer transition-colors">자세히 보기</button>
+            </article>
+          </div>
+
+        </div>
+
+        <!-- 푸터 -->
+        <div class="mt-4 px-5 py-4 bg-neutral-50 rounded-lg flex items-center justify-between gap-3 flex-wrap">
+          <span class="text-sm text-neutral-600">마음에 드는 일자리를 찾지 못하셨나요?</span>
+          <div class="flex gap-2">
+            <button class="h-10 px-4 text-[15px] font-bold rounded-btn border border-neutral-200 bg-neutral-0 text-neutral-700 hover:border-primary-500 hover:text-primary-500 cursor-pointer transition-all whitespace-nowrap">새 이력서 생성</button>
+            <button class="h-10 px-4 text-[15px] font-bold rounded-btn border border-neutral-200 bg-neutral-0 text-neutral-700 hover:border-primary-500 hover:text-primary-500 cursor-pointer transition-all whitespace-nowrap">기존 이력서 수정</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 공공기관 일자리 ── -->
+  <section class="pb-12">
+    <div class="section-container">
+      <div class="flex items-flex-end justify-between mb-4 gap-3">
+        <div>
+          <div class="text-xl font-bold text-neutral-900">공공기관에서 제공하는 일자리를 확인해보세요.</div>
+          <div class="text-base text-neutral-600 mt-1">공공기관에서 운영하는 안정적인 일자리입니다.<br>근무 조건과 지역에 가까운 일자리를 지원할 수 있습니다.</div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button class="w-8 h-8 rounded-full border border-neutral-200 bg-neutral-0 flex items-center justify-center cursor-pointer text-neutral-600 hover:border-primary-500 hover:text-primary-500 transition-all" aria-label="이전">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="w-8 h-8 rounded-full border border-neutral-200 bg-neutral-0 flex items-center justify-center cursor-pointer text-neutral-600 hover:border-primary-500 hover:text-primary-500 transition-all" aria-label="다음">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <a href="#" class="btn-ghost">공공 일자리 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+        </div>
+      </div>
+      <div class="jcard-grid">
+
+        <div>
+          <article class="jcard" role="article" aria-label="[반월동]3등급 할아버지 케어하실 요양보호사 모집">
+            <div class="flex items-center justify-between mb-2">
+              <span></span>
+              <span class="deadline">마감 D-26</span>
+            </div>
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <h3 class="text-base font-bold text-neutral-900 leading-snug">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
+              <button class="shrink-0 p-0.5 border-none bg-transparent cursor-pointer" aria-label="공고 저장">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+              </button>
+            </div>
+            <hr class="border-neutral-200 my-2">
+            <div class="flex flex-wrap gap-x-3 gap-y-1.5 mb-3 text-sm text-neutral-600">
+              <span>경기도 화성시 병원구</span>
+            </div>
+            <div class="text-sm font-bold text-neutral-900 mb-2">연봉 3,000만원 ~ 3,500만원</div>
+            <div class="flex-1 mb-3"></div>
+            <button class="w-full h-10 bg-primary-500 hover:bg-primary-400 text-white rounded-btn text-sm font-bold cursor-pointer transition-colors">세부사항 보기</button>
+          </article>
+        </div>
+
+        <div>
+          <article class="jcard" role="article" aria-label="[반월동]3등급 할아버지 케어하실 요양보호사 모집">
+            <div class="flex items-center justify-between mb-2">
+              <span></span>
+              <span class="deadline">마감 D-26</span>
+            </div>
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <h3 class="text-base font-bold text-neutral-900 leading-snug">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
+              <button class="shrink-0 p-0.5 border-none bg-transparent cursor-pointer" aria-label="공고 저장">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+              </button>
+            </div>
+            <hr class="border-neutral-200 my-2">
+            <div class="flex flex-wrap gap-x-3 gap-y-1.5 mb-3 text-sm text-neutral-600">
+              <span>경기도 화성시 병원구</span>
+            </div>
+            <div class="text-sm font-bold text-neutral-900 mb-2">연봉 3,000만원 ~ 3,500만원</div>
+            <div class="flex-1 mb-3"></div>
+            <button class="w-full h-10 bg-primary-500 hover:bg-primary-400 text-white rounded-btn text-sm font-bold cursor-pointer transition-colors">세부사항 보기</button>
+          </article>
+        </div>
+
+        <div>
+          <article class="jcard" role="article" aria-label="[반월동]3등급 할아버지 케어하실 요양보호사 모집">
+            <div class="flex items-center justify-between mb-2">
+              <span></span>
+              <span class="deadline">마감 D-26</span>
+            </div>
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <h3 class="text-base font-bold text-neutral-900 leading-snug">[반월동]3등급 할아버지 케어하실 요양보호사 모집</h3>
+              <button class="shrink-0 p-0.5 border-none bg-transparent cursor-pointer" aria-label="공고 저장">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+              </button>
+            </div>
+            <hr class="border-neutral-200 my-2">
+            <div class="flex flex-wrap gap-x-3 gap-y-1.5 mb-3 text-sm text-neutral-600">
+              <span>경기도 화성시 병원구</span>
+            </div>
+            <div class="text-sm font-bold text-neutral-900 mb-2">연봉 3,000만원 ~ 3,500만원</div>
+            <div class="flex-1 mb-3"></div>
+            <button class="w-full h-10 bg-primary-500 hover:bg-primary-400 text-white rounded-btn text-sm font-bold cursor-pointer transition-colors">세부사항 보기</button>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 이벤트 배너 ── -->
+  <div class="pb-12">
+    <div class="section-container">
+      <div class="bg-primary-500 rounded-xl min-h-[120px] flex items-center justify-center text-white text-xl font-bold">
+        이벤트 이미지 삽입
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 구직 정보 ── -->
+  <section class="py-12">
+    <div class="section-container">
+      <div class="flex items-flex-end justify-between mb-4 gap-3">
+        <div class="text-xl font-bold text-neutral-900">구직에 도움이 되는 정보를 확인해보세요.</div>
+        <a href="#" class="btn-ghost shrink-0">구직 정보 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      </div>
+      <!-- 탭 -->
+      <div class="flex gap-1.5 mb-5 flex-wrap">
+        <button class="inline-flex items-center h-8 px-4 text-sm font-bold text-white bg-primary-500 border border-primary-500 rounded-pill cursor-pointer">전체</button>
+        <button class="inline-flex items-center h-8 px-4 text-sm font-medium text-neutral-600 bg-neutral-0 border border-neutral-200 rounded-pill cursor-pointer hover:border-neutral-400 transition-colors">카테고리명</button>
+        <button class="inline-flex items-center h-8 px-4 text-sm font-medium text-neutral-600 bg-neutral-0 border border-neutral-200 rounded-pill cursor-pointer hover:border-neutral-400 transition-colors">카테고리명</button>
+        <button class="inline-flex items-center h-8 px-4 text-sm font-medium text-neutral-600 bg-neutral-0 border border-neutral-200 rounded-pill cursor-pointer hover:border-neutral-400 transition-colors">카테고리명</button>
+        <button class="inline-flex items-center h-8 px-4 text-sm font-medium text-neutral-600 bg-neutral-0 border border-neutral-200 rounded-pill cursor-pointer hover:border-neutral-400 transition-colors">카테고리명</button>
+      </div>
+      <!-- 콘텐츠 그리드 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="rounded-card overflow-hidden border border-neutral-200 cursor-pointer hover:border-neutral-400 hover:shadow-sm transition-all">
+          <div class="w-full h-40 bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm">이미지 영역</div>
+          <div class="p-4">
+            <span class="inline-flex items-center h-5 px-2 text-xs font-bold text-primary-500 bg-primary-50 rounded-pill mb-2">카테고리명</span>
+            <div class="text-base font-semibold text-neutral-900 leading-snug line-clamp-2">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
+            <div class="text-base text-neutral-400 mt-1.5">28-04-01</div>
+          </div>
+        </div>
+        <div class="rounded-card overflow-hidden border border-neutral-200 cursor-pointer hover:border-neutral-400 hover:shadow-sm transition-all">
+          <div class="w-full h-40 bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm">이미지 영역</div>
+          <div class="p-4">
+            <span class="inline-flex items-center h-5 px-2 text-xs font-bold text-primary-500 bg-primary-50 rounded-pill mb-2">카테고리명</span>
+            <div class="text-base font-semibold text-neutral-900 leading-snug line-clamp-2">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
+            <div class="text-base text-neutral-400 mt-1.5">28-04-01</div>
+          </div>
+        </div>
+        <div class="rounded-card overflow-hidden border border-neutral-200 cursor-pointer hover:border-neutral-400 hover:shadow-sm transition-all">
+          <div class="w-full h-40 bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm">이미지 영역</div>
+          <div class="p-4">
+            <span class="inline-flex items-center h-5 px-2 text-xs font-bold text-primary-500 bg-primary-50 rounded-pill mb-2">카테고리명</span>
+            <div class="text-base font-semibold text-neutral-900 leading-snug line-clamp-2">AI와 함께 디자이너 커리어 확장하는 방법 최대 두줄까지 노출</div>
+            <div class="text-base text-neutral-400 mt-1.5">28-04-01</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 일자리 관련 기사 ── -->
+  <section class="pb-12">
+    <div class="section-container">
+      <div class="flex items-flex-end justify-between mb-4 gap-3">
+        <div class="text-xl font-bold text-neutral-900">일자리 관련 기사를 확인해보세요.</div>
+        <a href="#" class="btn-ghost shrink-0">콘텐츠 더보기 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="px-4 py-3.5 border border-neutral-200 rounded-card cursor-pointer hover:border-neutral-400 transition-colors">
+          <div class="text-lg font-semibold text-neutral-900 leading-snug mb-2 line-clamp-3">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div>
+          <div class="text-base text-neutral-400">출처명</div>
+        </div>
+        <div class="px-4 py-3.5 border border-neutral-200 rounded-card cursor-pointer hover:border-neutral-400 transition-colors">
+          <div class="text-lg font-semibold text-neutral-900 leading-snug mb-2 line-clamp-3">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div>
+          <div class="text-base text-neutral-400">출처명</div>
+        </div>
+        <div class="px-4 py-3.5 border border-neutral-200 rounded-card cursor-pointer hover:border-neutral-400 transition-colors">
+          <div class="text-lg font-semibold text-neutral-900 leading-snug mb-2 line-clamp-3">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div>
+          <div class="text-base text-neutral-400">출처명</div>
+        </div>
+        <div class="px-4 py-3.5 border border-neutral-200 rounded-card cursor-pointer hover:border-neutral-400 transition-colors">
+          <div class="text-lg font-semibold text-neutral-900 leading-snug mb-2 line-clamp-3">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div>
+          <div class="text-base text-neutral-400">출처명</div>
+        </div>
+        <div class="px-4 py-3.5 border border-neutral-200 rounded-card cursor-pointer hover:border-neutral-400 transition-colors">
+          <div class="text-lg font-semibold text-neutral-900 leading-snug mb-2 line-clamp-3">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div>
+          <div class="text-base text-neutral-400">출처명</div>
+        </div>
+        <div class="px-4 py-3.5 border border-neutral-200 rounded-card cursor-pointer hover:border-neutral-400 transition-colors">
+          <div class="text-lg font-semibold text-neutral-900 leading-snug mb-2 line-clamp-3">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div>
+          <div class="text-base text-neutral-400">출처명</div>
+        </div>
+        <div class="px-4 py-3.5 border border-neutral-200 rounded-card cursor-pointer hover:border-neutral-400 transition-colors">
+          <div class="text-lg font-semibold text-neutral-900 leading-snug mb-2 line-clamp-3">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div>
+          <div class="text-base text-neutral-400">출처명</div>
+        </div>
+        <div class="px-4 py-3.5 border border-neutral-200 rounded-card cursor-pointer hover:border-neutral-400 transition-colors">
+          <div class="text-lg font-semibold text-neutral-900 leading-snug mb-2 line-clamp-3">기업에 맞는 액션 라이트 시니어를 주목할까? 최대 2줄이...</div>
+          <div class="text-base text-neutral-400">출처명</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── 푸터 ── -->
+<footer class="bg-neutral-0 border-t border-neutral-200 pt-10 pb-8">
+  <div class="section-container">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-10">
+      <!-- 공지사항 -->
+      <div>
+        <div class="text-sm font-bold text-neutral-900 mb-3 flex items-center justify-between">
+          공지사항
+          <a href="#" class="btn-ghost text-xs h-8 px-3">공지사항 더보기 &gt;</a>
+        </div>
+        <div>
+          <div class="notice-item">
+            <span class="inline-flex items-center h-5 px-2 text-xs font-bold text-primary-500 bg-primary-50 border border-primary-100 rounded shrink-0">공지</span>
+            <span class="text-sm text-neutral-700 flex-1">위치기반 서비스 이용약관</span>
+            <span class="text-xs text-neutral-400 shrink-0">26-04-01</span>
+          </div>
+          <div class="notice-item">
+            <span class="inline-flex items-center h-5 px-2 text-xs font-bold text-primary-500 bg-primary-50 border border-primary-100 rounded shrink-0">공지</span>
+            <span class="text-sm text-neutral-700 flex-1">위치기반 서비스 이용약관</span>
+            <span class="text-xs text-neutral-400 shrink-0">26-04-01</span>
+          </div>
+          <div class="notice-item">
+            <span class="inline-flex items-center h-5 px-2 text-xs font-bold text-primary-500 bg-primary-50 border border-primary-100 rounded shrink-0">공지</span>
+            <span class="text-sm text-neutral-700 flex-1">위치기반 서비스 이용약관</span>
+            <span class="text-xs text-neutral-400 shrink-0">26-04-01</span>
+          </div>
+        </div>
+      </div>
+      <!-- 고객센터 -->
+      <div>
+        <div class="text-sm font-bold text-neutral-900 mb-3 flex items-center justify-between">
+          고객센터/제품문의
+          <a href="#" class="btn-ghost text-xs h-8 px-3">고객센터 바로가기 &gt;</a>
+        </div>
+        <div class="bg-primary-50 border border-primary-100 rounded-card p-5">
+          <div class="flex items-center gap-2.5 text-[22px] font-bold text-neutral-900 mb-2.5">
+            <div class="w-9 h-9 rounded-full bg-primary-500 flex items-center justify-center shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            070-1234-5678
+          </div>
+          <div class="text-[13px] text-neutral-600 leading-[1.8]">
+            <div>평일 오전 10시 ~ 17시 &nbsp;|&nbsp; 점심 12:30 ~ 14:00</div>
+            <div>주말/공휴일 휴무</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 -->
+    <div class="mt-8 pt-6 border-t border-neutral-200 flex items-start justify-between gap-6 flex-wrap">
+      <div>
+        <div class="flex items-center gap-2 text-base font-bold text-primary-500 mb-2.5">
+          <div class="w-7 h-7 rounded-full gradient-bg flex items-center justify-center shrink-0">
+            <span class="text-xs font-extrabold text-white leading-none">N</span>
+          </div>
+          NextPartner
+        </div>
+        <div class="text-xs text-neutral-400 leading-[1.8]">
+          중장년층을 위한 일자리 매칭 플랫폼<br>
+          주소 | (04538) 서울시 성동구 아차산로 216-46 (용답동) 213-86-08423<br>
+          tel | 02-6473-7736 &nbsp; 이메일 | test@nextpartner.kr<br>
+          © 2026 NextPartner. All rights reserved.
+        </div>
+      </div>
+      <div class="flex flex-col gap-1.5 shrink-0">
+        <div class="text-sm font-bold text-neutral-800 mb-1">Support</div>
+        <a href="#" class="text-[13px] text-neutral-600 hover:text-primary-500 cursor-pointer transition-colors">고객센터</a>
+        <a href="#" class="text-[13px] text-neutral-600 hover:text-primary-500 cursor-pointer transition-colors">이력서등록이란?</a>
+        <a href="#" class="text-[13px] text-neutral-600 hover:text-primary-500 cursor-pointer transition-colors">기업서비스 이용안내</a>
+        <a href="#" class="text-[13px] text-neutral-600 hover:text-primary-500 cursor-pointer transition-colors">개인정보처리방침</a>
+        <a href="#" class="text-[13px] text-neutral-600 hover:text-primary-500 cursor-pointer transition-colors">이용약관</a>
+        <a href="#" class="text-[13px] text-neutral-600 hover:text-primary-500 cursor-pointer transition-colors">사이트맵</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── 모바일 하단 내비게이션 ── -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-neutral-0 border-t border-neutral-200 z-50" aria-label="하단 탐색">
+  <div class="flex items-stretch h-16">
+    <a href="#" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-primary-500">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="text-xs font-bold">홈</span>
+    </a>
+    <a href="#" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-neutral-400">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span class="text-xs font-medium">공고 찾기</span>
+    </a>
+    <a href="#" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-neutral-400">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+      <span class="text-xs font-medium">이력서</span>
+    </a>
+    <a href="#" class="flex-1 flex flex-col items-center justify-center gap-0.5 text-neutral-400">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span class="text-xs font-medium">내 계정</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+  document.querySelectorAll('.content-tabs button').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.content-tabs button').forEach(b => {
+        b.classList.remove('text-white', 'bg-primary-500', 'border-primary-500', 'font-bold');
+        b.classList.add('text-neutral-600', 'bg-neutral-0', 'border-neutral-200', 'font-medium');
+      });
+      this.classList.add('text-white', 'bg-primary-500', 'border-primary-500', 'font-bold');
+      this.classList.remove('text-neutral-600', 'bg-neutral-0', 'border-neutral-200', 'font-medium');
+    });
+  });
+</script>
+</body>
+</html>
